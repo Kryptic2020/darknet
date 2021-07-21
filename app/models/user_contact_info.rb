@@ -1,0 +1,2 @@
+class UserContactInfo < ApplicationRecord
+end
