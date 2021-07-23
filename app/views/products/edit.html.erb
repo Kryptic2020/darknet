@@ -1,6 +1,10 @@
-<h1>Editing Product</h1>
+<div class="jumbotron">
+  <h1 class="display-4">Edit Product!</h1>
+  <p class="lead"></p>
+  <hr class="my-4">
 
 <%= render 'form', product: @product %>
+</div>
+  <%= link_to 'Show', @product, class:"btn btn-primary mb-5" %> 
+  <%= link_to 'Back', products_path, class:"btn btn-secondary mx-3 mb-5" %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
