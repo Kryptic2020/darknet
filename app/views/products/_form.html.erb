@@ -1,0 +1,18 @@
+
+<%= simple_form_for(@product) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">      
+    <p class="mt-3"><%= f.input :title %></p>
+    <p class="mt-3"><%= f.input :description %></p>
+    <p class="mt-3"><%= f.input :price %></p>
+    <p class="mt-3"><%= f.association :condition %></p>
+    <p class="mt-3"><%= f.input :shipped_from %></p>
+    <p class="mt-3"><%= f.input :delivery_estimated, label: 'Delivery estimated (Days)' %></p>
+    <p class="mt-3"><%= f.input :quantity_available %></p>
+    <p class="mt-3"><%= f.association :category %></p>
+    <p class="mt-3"><%= f.file_field :picture, accept: 'image/png, image/jpg, image/jpeg' %></p>  
+    <%= f.button :submit, class:"btn btn-primary btn-lg btn-block mt-3 mb-3 " %> 
+  </div> 
+<% end %>

@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Condition:</strong>
+  <%= @product.condition.name %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @product.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Shipped from:</strong>
+  <%= @product.shipped_from %>
+</p>
+
+<p>
+  <strong>Delivery est:</strong>
+  <%= @product.delivery_estimated %>
+</p>
+
+<p>
+  <strong>Available:</strong>
+  <%= @product.quantity_available %>
+</p>
+
+<p>
+  <strong>Sold:</strong>
+  <%= @product.sold %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @product.user_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @product.category.name %>
+</p>
+
+<p>
+ 
+  <%= image_tag @product.picture %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

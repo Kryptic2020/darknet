@@ -50,7 +50,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Add gem for authentication
 gem 'devise'
 
-# Add bootstrap for styling
-gem 'bootstrap', '~> 4.6.0'
+# Add gem for styling
+gem 'bootstrap', '~> 5.0.1'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'material_icons'

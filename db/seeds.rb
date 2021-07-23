@@ -6,3 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 user_info = UserContactInfo.create(street_number: 41, unit: "H", street_name: "Gotha", suburb: "Fortitude Valley", phone: "0411 312 092", postcode: "4006")
+categories = Category.create([{name:"Electronic"},{name:"Music"},{name:"Services"},{name:"Vehicle"}])
+condition = Condition.create([{name:"New"},{name:"Used"}])
