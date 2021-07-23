@@ -1,2 +1,42 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="jumbotron">
+  <h1 class="display-4">Welcome to Dark Net!</h1>
+  <p class="lead"></p>
+  <hr class="my-4">
+</div>
+
+<div class="container">
+  <form action="<%= home_path%>" method="POST" class="form-inline row">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <div class="col-5 col-sm-6 p-0">
+      <input name="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+    </div>
+    <select name="category" class="custom-select col-4 col-sm-3 mx-sm-1 " id="Select">    
+      <option value="">Choose...</option>
+      <% @categories.each do |category| %>
+        <option type="text" value=<%= category.id %> >
+          <%= category.name %>
+        </option>
+      <%end%>
+    </select> 
+    <button class="btn btn-outline-success col-3 col-sm-2" type="submit">
+      Search
+    </button >
+  </form>
+  <div class="d-flex row justify-content-around">
+  <% if @product %>
+    <% @product.each do |product|%>
+    
+      <div class="card mt-3 mt-sm-3 p-0" style="width: 10rem;">
+        <%= image_tag product.picture, class:"card-img-top " %>
+        <div class="card-body">
+          <h5 class="card-title"><%= product.title.capitalize %></h5>
+          <p class="card-text">Available: <%= product.quantity_available %></p>      
+          <p class="card-text">Price: <%= product.price %></p>
+          <p class="card-text">Sold: <%= product.sold %></p>         
+          <a href="#" class="card-link">See More</a>
+        </div>
+      </div>    
+    <%end%>
+    </div>
+  <%end%>
+</div>
