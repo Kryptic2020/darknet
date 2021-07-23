@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+<div class="jumbotron">
+  <h1 class="display-4">Product list!</h1>
+  <p class="lead"></p>
+  <hr class="my-4">
   
   <% @products.each do |product| %>
     <div class="row mt-5">
@@ -30,15 +33,13 @@
       </div>
 
       <div class="col">      
-        <%= link_to 'See', product, class:"btn btn-success btn-sm" %>
+        <%= link_to 'See', product, class:"btn btn-primary btn-sm" %>
         <%= link_to 'Edit', edit_product_path(product), class:"btn btn-warning btn-sm" %>
         <%= link_to 'Del', product, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %>        
       </div>  
     </div>    
   <% end %>
-  
-
-
+</div>
 <br>
 
-<%= link_to 'New Product', new_product_path, class:"btn btn-primary" %>
+<%= link_to 'New Product', new_product_path, class:"btn btn-info" %>
