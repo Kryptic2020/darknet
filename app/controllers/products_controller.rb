@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
 
   # POST /products or /products.json
   def create
+  p params
     @product = Product.new(product_params)
     @product.user_id = current_user.id
     respond_to do |format|
