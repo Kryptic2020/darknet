@@ -51,9 +51,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 
 # Add gem for styling
-gem 'bootstrap', '~> 5.0.1'
+gem 'bootstrap', '~> 4.5.2'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'material_icons'
-
 gem "aws-sdk-s3", "~> 1.96"
