@@ -1,7 +1,7 @@
 
 
 
-<div class="container" style="max-width: 46rem;">
+<div class="container" style="max-width: 36rem;">
   
   <h3 >Hot Deal!</h3>
   
@@ -14,11 +14,22 @@
     <h5 class="card-title"><%= @product.title%></h5>
     <p class="card-text"><%= @product.description%></p>
     <p class="card-text t-blue">Price AUD$ <%= @product.price%></p>
+    <p class="card-text">Condition: <%= @product.condition.name%></p>
+    
 
-    <p class="card-text t-red">Sold <%= @product.sold%></p>
-<p class="card-text t-greem">Available <%= @product.quantity_available%></p>
-<p class="card-text">Shipped From <%= @product.shipped_from%></p>
+    
+<p class="card-text">Shipped From <%= @product.shipped_from%> - Free Shipping</p>
 <p class="card-text">Delivery estimated <%= @product.delivery_estimated%> days</p>
+<p>Quantity  <select class="custom-select w-50 my-1 mx-sm-2" id="select">
+    <option value="1" selected>1</option>
+    <% 29.times do |i |%>
+    <option value="<%= i + 2%>"><%= i + 2%></option>
+    <%end%>
+    
+  </select>
+  </p>
+<p class="card-text t-red">Sold <%= @product.sold%></p>
+<p class="card-text t-greem">Available <%= @product.quantity_available%></p>
 
     <p class="card-text"><small class="text-muted">Last updated <%= @product.created_at%></small></p>
   </div>
