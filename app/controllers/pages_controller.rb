@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @categories = Category.all
-    @product = Product.all
+    @products = Product.all
     if params[:category] != ""
       category = params[:category]
     end
@@ -13,19 +13,25 @@ class PagesController < ApplicationController
 
     if category && title
       @title = Product.where(Product.arel_table[:title].matches("%#{title}%"))
-      @product = []
+      @products = []
       @title.each do |cat|       
         if cat.category_id.to_s == category
         @product << cat
         end
       end
     elsif category &&!title
-      @product = Product.where(category:category)
+      @products = Product.where(category:category)
     elsif !category && title
-      @product = Product.where(Product.arel_table[:title].matches("%#{title}%"))
+      @products = Product.where(Product.arel_table[:title].matches("%#{title}%"))
     else
-    @product = Product.all
+    @products = Product.all
     end    
+  end
+
+  def show
+    @product = Product.find(params[:id])
+    
+    p @product.title
   end
 
   def restricted

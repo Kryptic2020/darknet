@@ -1,0 +1,29 @@
+
+
+
+<div class="container" style="max-width: 46rem;">
+  
+  <h3 >Hot Deal!</h3>
+  
+  <hr class="my-4">
+
+  <div class="card m-auto">
+<%= image_tag @product.picture, class:"card-img-top"%>
+  
+  <div class="card-body">
+    <h5 class="card-title"><%= @product.title%></h5>
+    <p class="card-text"><%= @product.description%></p>
+    <p class="card-text t-blue">Price AUD$ <%= @product.price%></p>
+
+    <p class="card-text t-red">Sold <%= @product.sold%></p>
+<p class="card-text t-greem">Available <%= @product.quantity_available%></p>
+<p class="card-text">Shipped From <%= @product.shipped_from%></p>
+<p class="card-text">Delivery estimated <%= @product.delivery_estimated%> days</p>
+
+    <p class="card-text"><small class="text-muted">Last updated <%= @product.created_at%></small></p>
+  </div>
+</div>
+<%= link_to 'Buy Now', new_product_path, class:"btn btn-primary btn-lg btn-block my-3" %>
+<%= link_to 'Add To Cart', new_product_path, class:"btn btn-info btn-lg btn-block my-3" %>
+<%= link_to material_icon.favorite, new_product_path, class:"btn btn-light btn-lg btn-block my-3" %>
+</div>

@@ -22,9 +22,9 @@
       Search
     </button >
   </form>
-  <div class="d-flex row justify-content-around">
-  <% if @product %>
-    <% @product.each do |product|%>
+  <div class="d-flex row justify-content-around mb-3">
+  <% if @products %>
+    <% @products.each do |product|%>
     
       <div class="card mt-3 mt-sm-3 p-0" style="width: 10rem;">
         <%= image_tag product.picture, class:"card-img-top " %>
@@ -33,7 +33,7 @@
           <p class="card-text">Available: <%= product.quantity_available %></p>      
           <p class="card-text">Price: <%= product.price %></p>
           <p class="card-text">Sold: <%= product.sold %></p>         
-          <a href="#" class="card-link">See More</a>
+          <%= link_to "See more", see_product_path(product.id)%>
         </div>
       </div>    
     <%end%>

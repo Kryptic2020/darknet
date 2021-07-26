@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   get "/restricted", to: "pages#restricted", as: "restricted"
   post "/home", to: "pages#home", as:"home"
   get "/home", to: "pages#home"
+  get "/home", to: "pages#home"
+  get "/buyer/product/:id", to: "pages#show", as:"see_product"
 end
