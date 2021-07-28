@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:restricted]  
+  before_action :set_cart_item, only: [:show]
 
   def home
     @categories = Category.all
@@ -31,11 +32,17 @@ class PagesController < ApplicationController
   def show
     @product = Product.find(params[:id])
     
-    p @product.title
+    @cart_item = @product.cart_items.new
+     
   end
 
   def restricted
   end 
+
+  def set_cart_item
+  
+    
+  end
    
   
 end

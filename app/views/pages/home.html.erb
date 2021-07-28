@@ -27,11 +27,14 @@
     <% @products.each do |product|%>
     
       <div class="card my-3 mt-sm-3 p-0" style="width: 10rem;">
-        <%= image_tag product.picture, class:"card-img-top " %>
+        <div class="h-50 d-flex">
+          <div class="my-auto"><%= image_tag product.picture, class:"card-img-top" %></div>
+          
+        </div>
         <div class="card-body">
           <h5 class="card-title"><%= product.title.capitalize %></h5>
                
-          <p class="card-text my-0"><small>Price: $ <%= product.price %></small></p>
+          <p class="card-text my-0"><small>Price: $ <%= number_with_precision(product.price, precision: 2) %></small></p>
           <p class="card-text my-0 t-greem"><small>Available: <%= product.quantity_available %></small></p> 
           <p class="card-text t-red"><small>Sold: <%= product.sold %></small></p><small>         
           <%= link_to "See more", see_product_path(product.id)%></small>
