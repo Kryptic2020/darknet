@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  
+  resources :carts
   resources :products
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
@@ -9,5 +11,12 @@ Rails.application.routes.draw do
   post "/home", to: "pages#home", as:"home"
   get "/home", to: "pages#home"
   get "/home", to: "pages#home"
-  get "/buyer/product/:id", to: "pages#show", as:"see_product"
+  get "/buyer/product/:id", to: "pages#show", as: "see_product"
+  get 'cart_item/index', to:"cart_item#index", as:"cart_item_index"
+  get 'cart_item/create', to:"cart_item#create", as: "cart_item_create"
+  get 'cart_item/show/:id', to:"cart_item#show", as:"cart_item_show"
+  put 'cart_item/update/:id', to:"cart_item#update", as:"cart_item_update"
+  delete 'cart_item/destroy/:id', to:"cart_item#destroy", as:"cart_item_destroy"
 end
+
+

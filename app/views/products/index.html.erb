@@ -4,42 +4,44 @@
   <h1 class="display-4">Product list!</h1>
   <p class="lead"></p>
   <hr class="my-4">
-  
+</div>
+<div class="container">
   <% @products.each do |product| %>
-    <div class="row mt-5">
-      <div class="col ">
-        <h5 class="row">Title</h5>
-        <p class="row"><%= product.title %></p>
+    <div class="row mt-5 justify-content-between">
+      <div class="col-2">
+        <h6 class="row">Title</h6>
+        <p class="row text-truncate"><%= product.title %></p>
       </div>
 
-      <div class="col ">
-        <h5 class="row">Price</h5>
+      <div class="col-2 mx-auto">
+        <h6 class="row">Price</h6>
         <p class="row"><%= number_with_precision(product.price, precision: 2) %></p>
       </div>
 
-      <div class="col ">
-        <h5 class="row">Available</h5>
-        <p class="row"><%= product.quantity_available %></p>
+      <div class="col-2 mx-auto">
+        <h6 class="row">Available</h6>
+        <p class="row m-auto"><%= product.quantity_available %></p>
       </div>
 
-      <div class="col ">
-        <h5 class="row">Sold</h5>
-        <p class="row"><%= product.sold %></p>
+      <div class="col-1 mx-auto">
+        <h6 class="row">Sold</h6>
+        <p class="row m-auto"><%= product.sold %></p>
       </div>
 
-      <div class="col ">
-        <h5 class="row">Category</h5>
+      <div class="col-2 mx-auto">
+        <h6 class="row">Category</h6>
         <p class="row"><%= product.category.name %></p>
       </div>
 
-      <div class="col">      
-        <%= link_to 'See', product, class:"btn btn-primary btn-sm" %>
-        <%= link_to 'Edit', edit_product_path(product), class:"btn btn-warning btn-sm" %>
+      <div class="row col-12 mx-auto mt-1 mb-3">      
+        <%= link_to 'See', product, class:"btn btn-primary btn-sm mr-1" %>
+        <%= link_to 'Edit', edit_product_path(product), class:"btn btn-warning btn-sm mr-1" %>
         <%= link_to 'Del', product, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %>        
       </div>  
     </div>    
   <% end %>
-</div>
+
 <br>
 
 <%= link_to 'New Product', new_product_path, class:"btn btn-info mb-3" %>
+</div>
