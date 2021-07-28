@@ -1,7 +1,10 @@
 <div class="container" style="max-width: 36rem;">
-<form action="/carts" method="POST">
-  <h3>Item Details!</h3>
+
+  <div class="jumbotron">
+  <h1 class="display-5">MyCart Item!</h1>
+  <p class="lead"></p>
   <hr class="my-4">
+</div>
   <div class="card m-auto">
     <%= image_tag @product.picture, class:"card-img-top"%>
     <div class="card-body">
@@ -25,18 +28,11 @@
       </p>
 
       
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
-
-        <p>Quantity 
-          <select name="quantity" class="custom-select w-50 my-1 mx-sm-2" id="select">
-            <option value="1" selected>1</option>
-            <% 29.times do |i |%>
-              <option value="<%= i + 2%>">
-                <%= i + 2%>
-              </option>
-            <%end%>
-          </select>
-        </p>
+        
+      <p class="card-text">Quantity 
+        <%= @cart_item.quantity%> 
+      </p>
+        
         <p class="card-text t-red">Sold 
           <%= @product.sold%>
         </p>
@@ -51,13 +47,8 @@
         </p>
       </div>
     </div>
-    <button type="submit" name="path_mycart" value="true" class="btn btn-primary btn-lg btn-block my-3">Buy It Now!
-    </button>
-    <button type="submit" name="path_home" value="true" class="btn btn-info btn-lg btn-block my-3">Add To Cart!
-    </button>
-  
-  <%= link_to material_icon.favorite, new_product_path, class:"btn btn-danger btn-lg btn-block my-3" %>
+ 
 
-  <%= link_to "Back" , root_path, class:"btn btn-light btn-lg btn-block my-3" %>
-  </form>
+  <%= link_to "Back" , cart_path(@cart_item.cart_id), class:"btn btn-info btn-lg btn-block my-3" %>
+  
 </div>

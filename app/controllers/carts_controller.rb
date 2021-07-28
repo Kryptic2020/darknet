@@ -15,6 +15,11 @@ class CartsController < ApplicationController
   cart_id = params[:id]
   @cart_items = CartItem.where(cart_id:cart_id)
   @cart = Cart.find(cart_id)
+  @total_amount = 0
+  @cart_items.each do |x|
+        @total_amount =  @total_amount + x.price
+      end
+      @cart.update(total_amount:@total_amount)
   end
 
   # GET /carts/new
@@ -35,27 +40,29 @@ class CartsController < ApplicationController
     product_id = params[:product_id].to_i
     quantity = params[:quantity].to_i
     product = Product.find(product_id)
-    price = quantity * product.price
+     if quantity > product.quantity_available
+      redirect_to see_product_path(product_id), alert: "Action Denied!!! Quantity not available, please try less"
+    else
+    price = quantity * product.price    
     if @my_cart.length == 0     
       payment = Payment.new            
-      cart = Cart.create!(payment:payment, status:status, user:user)
-      cart_item = CartItem.create!(cart:cart, product:product, quantity:quantity, price:price)    
-      cart.update(total_amount:price)
+      @my_cart = Cart.create!(payment:payment, status:status, user:user)
+      cart_item = CartItem.create!(cart:@my_cart, product:product, quantity:quantity, price:price)        
     else
       @my_cart = @my_cart[0]
       cart_item = CartItem.create!(cart_id:@my_cart.id, product:product, quantity:quantity, price:price)
-      prices = CartItem.where(cart_id:@my_cart.id)
-      @total_amount = 0
-      prices.each do |x|
-        @total_amount =  @total_amount + x.price
-      end
-      @my_cart.update(total_amount:@total_amount)
+      prices = CartItem.where(cart_id:@my_cart.id)      
     end     
     if params[:path_mycart] == "true"
       redirect_to cart_path(@my_cart.id)
     elsif params[:path_home] == "true"
       redirect_to root_path, notice: "Added to cart!"
-    end  
+    end 
+    #Update product Sold and available
+    sold = product.sold + quantity
+    available = product.quantity_available - quantity
+    updated = product.update(sold:sold, quantity_available:available)
+    end
   end
 
   # PATCH/PUT /carts/1 or /carts/1.json
