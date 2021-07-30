@@ -1,0 +1,21 @@
+<div class="jumbotron">
+  <h1 class="display-5">Save My Shipping Details!</h1>
+  <p class="lead"></p>
+  <hr class="my-4">
+</div>
+<%= simple_form_for(@user_contact_info, :url => create_user_contact_info_path ) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">      
+    <p class="mt-3"><%= f.input :unit %></p>
+    <p class="mt-3"><%= f.input :street_number %></p>
+    <p class="mt-3"><%= f.input :street_name %></p>    
+    <p class="mt-3"><%= f.input :suburb %></p>
+    <p class="mt-3"><%= f.input :postcode, label: '' %></p>
+    <p class="mt-3"><%= f.input :phone %></p>
+    
+    
+    <%= f.button :submit, 'Save', class:"btn btn-info btn-lg btn-block mt-3 mb-3 " %> 
+  </div> 
+<% end %>

@@ -1,0 +1,2 @@
+module UserContactInfoHelper
+end
