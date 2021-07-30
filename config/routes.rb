@@ -1,14 +1,8 @@
 Rails.application.routes.draw do
-  get 'user_info/index'
-  get 'user_info/show'
-  get 'user_info/edit'
-  get 'user_info/create'
-  get 'user_info/delete'
-  get 'payment/checkout'
-  get 'payment/webhook'
+ 
   resources :carts
   resources :products
-  resources :user_info
+  resources :user_contact_info
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -26,8 +20,8 @@ Rails.application.routes.draw do
   post "/payment/webhook", to: "payment#webhook"
   get 'payment/success', to: 'payment#success'
   get 'payment/webhook'
+  post "user_contact_info/new", to:"user_contact_info#create", as: "create_user_contact_info"
   
-
 end
 
 
