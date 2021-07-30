@@ -46,5 +46,15 @@
   <p class="lead"></p>
   
 </div>
-<%= link_to 'Check Out', root_path, class:"btn btn-primary btn-lg btn-block my-3" %>
+<a href="<%= has_info? ? nil : user_info_create_path %>"><button class="btn btn-primary btn-lg btn-block my-3 <%= user_signed_in? ? nil : "disabled" %>" data-stripe="<%= has_info? ? "payment" : nil %>">Checkout!</button></a>
 <%= link_to 'Continue Shopping', root_path, class:"btn btn-info btn-lg btn-block my-3" %>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  document.querySelector("[data-stripe='payment']").addEventListener("click", () => {
+    const stripe = Stripe("<%= Rails.application.credentials.dig(:stripe, :public_key) %>");
+    stripe.redirectToCheckout({
+      sessionId: "<%= @session_id %>"
+    });
+  });
+</script>
