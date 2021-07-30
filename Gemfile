@@ -56,3 +56,5 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'material_icons'
 gem "aws-sdk-s3", "~> 1.96"
+
+gem "stripe", "~> 5.37"

@@ -14,7 +14,7 @@
         <span class="col-4"><%= cart.created_at.strftime('%d/%m/%Y')%></span>
         <span class="col-4"><%= cart.id %><%= cart.receipt_url %></span>
         
-        <span class="col-4"><%= cart.total_amount %></span>
+        <span class="col-4"><%= number_with_precision(cart.total_amount, precision: 2) %></span>
         </div>
         <div class="row mx-auto mt-2 mb-4">
         <%= link_to 'See', cart, class:"btn btn-primary btn-sm mr-2" %>

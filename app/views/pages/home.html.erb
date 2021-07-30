@@ -22,11 +22,11 @@
       Search
     </button >
   </form>
-  <div class="d-flex bg-dark b-radius row justify-content-around my-3">
+  <div class="d-flex bg-light h-100 b-radius row justify-content-around my-3">
   <% if @products %>
     <% @products.each do |product|%>
     
-      <div class="card my-3 mt-sm-3 p-0" style="width: 10rem;">
+      <div class="card my-3 mt-3 p-0" style="width: 10rem;">
         <div class="h-50 d-flex">
           <div class="my-auto"><%= image_tag product.picture, class:"card-img-top" %></div>
           
