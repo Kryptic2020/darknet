@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, only: [:restricted]  
+   
   before_action :set_cart_item, only: [:show]
 
   def home
@@ -30,10 +30,9 @@ class PagesController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
-    
+    @product = Product.find(params[:id])    
     @cart_item = @product.cart_items.new
-     
+     session[:return_to] = request.env['PATH_INFO']     
   end
 
   def restricted
