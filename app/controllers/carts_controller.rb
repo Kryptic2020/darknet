@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
-  before_action :get_cart, only: [:create]
+  before_action :update_cart_total_amount
+
 
   # GET /carts or /carts.json
   def index
@@ -14,29 +15,14 @@ class CartsController < ApplicationController
   def show
     cart_id = params[:id]
     @cart_items = CartItem.where(cart_id:cart_id)
-    @cart = Cart.find(cart_id)
-    @total_amount = 0
-    @cart_items.each do |x|
-      @total_amount =  @total_amount + x.price
-    end
-    @cart.update(total_amount:@total_amount)
-  end
-
-  # GET /carts/new
-  def new
-    
-  end
-
-  # GET /carts/1/edit
-  def edit
+    @cart = Cart.find(cart_id)    
   end
 
   # POST /carts or /carts.json
   def create
     status = Status.first
     user = User.find(current_user.id)
-    @my_cart = Cart.where(user:user, status:status) 
-    user = User.find(current_user.id)
+    @my_cart = Cart.find_by(user:user, status:status)     
     product_id = params[:product_id].to_i
     quantity = params[:quantity].to_i
     product = Product.find(product_id)
@@ -48,16 +34,17 @@ class CartsController < ApplicationController
       payment = Payment.new            
       @my_cart = Cart.create!(payment:payment, status:status, user:user)
       cart_item = CartItem.create!(cart:@my_cart, product:product, quantity:quantity, price:price)        
-    else
-      @my_cart = @my_cart[0]
+    else      
       cart_item = CartItem.create!(cart_id:@my_cart.id, product:product, quantity:quantity, price:price)
       prices = CartItem.where(cart_id:@my_cart.id)      
-    end     
+    end 
+    #redirect path    
     if params[:path_mycart] == "true"
       redirect_to cart_path(@my_cart.id)
     elsif params[:path_home] == "true"
       redirect_to root_path, notice: "Added to cart!"
     end 
+ 
     #Update product Sold and available
     sold = product.sold + quantity
     available = product.quantity_available - quantity
@@ -86,11 +73,23 @@ class CartsController < ApplicationController
    redirect_to carts_path, notice: "Deleted"
 
   end
-
+  
   private
-
-
-    def get_cart
-      
+  def update_cart_total_amount
+    cart = get_cart
+    cart_items = CartItem.where(cart_id:cart.id)        
+    @total_amount = 0
+    cart_items.each do |x|
+      @total_amount = @total_amount + x.price
     end
+    cart.update(total_amount:@total_amount)
+  end
+    
+
+  def get_cart
+    status = Status.first
+    user = User.find(current_user.id)
+    my_cart = Cart.find_by(user:user, status:status)
+    return my_cart        
+  end
 end

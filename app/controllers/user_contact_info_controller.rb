@@ -1,12 +1,12 @@
 class UserContactInfoController < ApplicationController
   before_action :authenticate_user!  
-before_action :my_cart
+  before_action :my_cart
 
 
   def my_cart
     status = Status.first
-    cart = Cart.where(user_id:current_user.id, status:status)
-    return cart[0].id
+    cart = Cart.find_by(user_id:current_user.id, status:status)
+    return cart.id
   end
 
   def show
@@ -60,20 +60,24 @@ before_action :my_cart
   
 
   def update
-    UserContactInfo.find_by(user_id:current_user.id).update(user_info_params)
+  p "---------------------------------"
+  
+    updated = UserContactInfo.find_by(user_id:current_user.id).update(user_contact_info_params)
     redirect_to user_contact_info_path
   end
 
   def create 
+  p "---------------------------------"
+  p params.inspect
     user = User.find(current_user.id)
-    new = UserContactInfo.new(user_info_params)
+    new = UserContactInfo.new(user_contact_info_params)
     new.user_id = current_user.id
     new.save
     redirect_to user_contact_info_path(user.id)
   end
 
-def user_info_params
-  params.require(:user_contact_info).permit(:unit, :street_name, :street_number, :postcode, :suburb, :phone, :confirmed )  
-end
-
+  private
+  def user_contact_info_params
+    params.require(:user_contact_info).permit(:unit,:street_number,:street_name,:suburb,:postcode,:phone) 
+  end
 end
