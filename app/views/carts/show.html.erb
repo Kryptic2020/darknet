@@ -30,8 +30,10 @@
       </div>
       <div class="row col-12 mx-auto mt-1 mb-3">      
         <%= link_to 'See', cart_item_show_path(item.id), class:"btn btn-primary btn-sm mr-1" %>
+        <% if @cart.receipt_url%>
         <%= link_to 'Edit', cart_item_edit_path(item.id), class:"btn btn-warning btn-sm mr-1" %>
-        <%= link_to 'Del', cart_item_destroy_path(item.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %>        
+        <%= link_to 'Del', cart_item_destroy_path(item.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %>  
+        <%end%>      
       </div>  
     </div>    
   <% end %>

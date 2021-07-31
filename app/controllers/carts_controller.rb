@@ -30,7 +30,7 @@ class CartsController < ApplicationController
       redirect_to see_product_path(product_id), alert: "Action Denied!!! Quantity not available, please try less"
     else
     price = quantity * product.price    
-    if @my_cart.length == 0     
+    if !@my_cart     
       payment = Payment.new            
       @my_cart = Cart.create!(payment:payment, status:status, user:user)
       cart_item = CartItem.create!(cart:@my_cart, product:product, quantity:quantity, price:price)        
@@ -77,12 +77,14 @@ class CartsController < ApplicationController
   private
   def update_cart_total_amount
     cart = get_cart
-    cart_items = CartItem.where(cart_id:cart.id)        
-    @total_amount = 0
-    cart_items.each do |x|
-      @total_amount = @total_amount + x.price
-    end
-    cart.update(total_amount:@total_amount)
+    if cart
+      cart_items = CartItem.where(cart_id:cart.id)        
+      @total_amount = 0
+      cart_items.each do |x|
+        @total_amount = @total_amount + x.price
+      end
+      cart.update(total_amount:@total_amount)
+    end  
   end
     
 
