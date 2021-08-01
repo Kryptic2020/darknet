@@ -22,25 +22,46 @@
       Search
     </button >
   </form>
-  <div class="d-flex bg-light h-100 b-radius row justify-content-around my-3">
-  <% if @products %>
-    <% @products.each do |product|%>
-    
-      <div class="card my-3 mt-3 p-0" style="width: 10rem;">
-        <div class="h-50 d-flex">
-          <div class="my-auto"><%= image_tag product.picture, class:"card-img-top" %></div>
-          
-        </div>
-        <div class="card-body">
-          <h5 class="card-title"><%= product.title.capitalize %></h5>
-               
-          <p class="card-text my-0"><small>Price: $ <%= number_with_precision(product.price, precision: 2) %></small></p>
-          <p class="card-text my-0 t-greem"><small>Available: <%= product.quantity_available %></small></p> 
-          <p class="card-text t-red"><small>Sold: <%= product.sold %></small></p><small>         
-          <%= link_to "See more", see_product_path(product.id)%></small>
-        </div>
-      </div>    
+  <div class="d-flex bg-light h-100 b-radius row justify-content-around my-3" >
+    <% if @products %>
+      <% @products.each do |product|%>      
+        <div class="card border-dark my-3 mt-3 p-0" style="width: 10rem;height: 26rem;">
+          <%= link_to see_product_path(product.id) do %>
+            <div style="height: 20rem;" >             
+              <div class="h-50 d-flex red">
+                <%= image_tag product.picture, class:"img-fluid mh-100" %>
+              </div>  
+              <div class="h-50 t-black card-body">
+                <h5 class="card-title text-truncate"><%= product.title.capitalize %></h5>            
+                <p class="card-text my-0"><small>Price: $ <%= number_with_precision(product.price, precision: 2) %></small>
+                </p>
+                <p class="card-text my-0 t-greem"><small>Available: <%= product.quantity_available %></small>
+                </p> 
+                <p class="card-text t-red"><small>Sold: <%= product.sold %></small>
+                </p>           
+              </div>
+            </div>
+          <% end %> 
+          <div class="" style="height: 6rem;">
+            <%= form_with url: add_favorite_path(product.id), local: true, method: :post do %> 
+              <div id="<%= product.id%>" class="h-50 alert alert-success alert-dismissable m-0" style="display: none">
+                <button type="button" class="close h-50" data-dismiss="alert" aria-hidden="true">&times;</button>
+                  Saved!
+              </div> 
+              <button onclick='myFunction("<%= product.id%>")' class="h-50 btn btn-lg t-pink btn-block m-0">
+                <i class="material-icons align-middle">favorite</i>
+                <small>Save</small>              
+              </button>          
+            <%end%> 
+          </div>                          
+        </div>    
+      <%end%>
     <%end%>
-    </div>
-  <%end%>
+  </div>
 </div>
+
+<script>
+  function myFunction(id) {
+    document.getElementById(id).style.display = 'block';  
+ }
+</script>

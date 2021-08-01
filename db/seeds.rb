@@ -7,12 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 user = User.create(email:"alex@test.com", password:"asdasd")
 
-user_info = UserContactInfo.create(street_number: 41, unit: "H", street_name: "Gotha", suburb: "Fortitude Valley", phone: "0411 312 092", postcode: "4006")
-
-categories = Category.create([{name:"Electronic"},{name:"Music"},{name:"Services"},{name:"Vehicle"}])
+categories = Category.create([{name:"Electronic"},{name:"Music"},{name:"Services"},{name:"Vehicle"},{name:"Books"},,{name:"Clothing"},])
 
 condition = Condition.create([{name:"New"},{name:"Used"}])
 
-status = Status.create([{name:"Open"}, {name:"Close"}])
-#payment = Payment.create(payment_intent_id:"shadjsdhad", receipt_url:"hjsjadhasjkd")
-product = Product.create(title:"Phone",description:"Iphone X",price:900,shipped_from:"Sydney",delivery_estimated:14,quantity_available:300,user_id:1,category_id:1,condition_id:1)
+status = Status.create([{name:"Open"}, {name:"Processed"}])
+

@@ -1,5 +1,5 @@
 
-<nav class="navbar navbar-expand navbar-light bg-light">
+<nav class="navbar navbar-expand navbar-dark bg-dark">
 <div class="container">
   <div class="row mx-auto col-12">
   <%= link_to "Dark Net", root_path, class:"navbar-brand  col-6 justify-content-start p-0 m-0 my-auto" %>
@@ -12,7 +12,7 @@
         <%= link_to "Sell", products_path, class:"nav-link" %>
       </li>
       
-     <li class="nav-item"><%= link_to material_icon.favorite, root_path, class:"nav-link" %>
+     <li class="nav-item"><%= link_to material_icon.favorite, favorite_index_path, class:"nav-link" %>
      </li>
 
      <li class="nav-item"><%= link_to material_icon.shopping_cart, carts_path, class:"nav-link" %>

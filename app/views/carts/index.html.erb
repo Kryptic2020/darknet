@@ -18,12 +18,12 @@
         </div>
         <div class="row mx-auto mt-2 mb-4">
         <%= link_to 'See', cart, class:"btn btn-primary btn-sm mr-2" %>
-        <% if !cart.receipt_url%>
+        <% if !cart.payment.receipt_url%>
         <%= link_to 'Edit', cart,class:"btn btn-warning btn-sm mr-2" %>
         <%= link_to 'Del', cart, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %>
         <%end%>
-        <% if cart.receipt_url%>
-        <%= link_to 'View Receipt', cart.receipt_url, target: :_blank, class:" mx-3" %> 
+        <% if cart.payment.receipt_url%>
+        <%= link_to 'View Receipt', cart.payment.receipt_url, target: :_blank, class:" mx-3" %> 
         <%end%>
         
         </div>

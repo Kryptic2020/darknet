@@ -2,15 +2,18 @@ class PaymentController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:webhook]
   
   def success
-    @cart = Cart.find(params[:cartId])    
+  
+    @cart = Cart.find(params[:cartId]) 
+    p "-----------------------------test----------------"
+    p @cart.payment
   end
 
-  def test
-  p "-----------------------------test----------------"
-  payment = Stripe::PaymentIntent.retrieve("pi_3JJE0yEe6AwIaPMz0oLYZ9wy")
-  receipt = payment.charges.data[0].receipt_url
-  authorization = payment.charges.data[0].outcome.type
-  end
+  # def test
+  #   p "-----------------------------test----------------"
+  #   payment = Stripe::PaymentIntent.retrieve("pi_3JJE0yEe6AwIaPMz0oLYZ9wy")
+  #   receipt = payment.charges.data[0].receipt_url
+  #   authorization = payment.charges.data[0].outcome.type
+  # end
 
   def webhook   
     payment_id = params[:data][:object][:payment_intent]
@@ -25,7 +28,8 @@ class PaymentController < ApplicationController
     p = "-------------------authorized----------------------------"
       update_sold(cart)
       cart.payment.update(receipt_url:@receipt,payment_intent_id:payment_id)
-      cart.update(status:"Processed") 
+      status = Status.last
+      cart.update(status:status) 
       render plain: "Success"
     else
       redirect_to root_path, notice: "Your Payment has been #{@authorization}, please try again later"
