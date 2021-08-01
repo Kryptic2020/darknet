@@ -1,7 +1,7 @@
 class UserContactInfoController < ApplicationController
   before_action :authenticate_user!  
   before_action :my_cart
-
+  before_action :user_contact_info_params, only: [:create, :update]
 
   def my_cart
     status = Status.first
@@ -56,19 +56,14 @@ class UserContactInfoController < ApplicationController
 
   def edit
     @user_contact_info = UserContactInfo.find_by(user_id:current_user.id)
-  end
-  
+  end  
 
   def update
-  p "---------------------------------"
-  
     updated = UserContactInfo.find_by(user_id:current_user.id).update(user_contact_info_params)
     redirect_to user_contact_info_path
   end
 
-  def create 
-  p "---------------------------------"
-  p params.inspect
+  def create
     user = User.find(current_user.id)
     new = UserContactInfo.new(user_contact_info_params)
     new.user_id = current_user.id

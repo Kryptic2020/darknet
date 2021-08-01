@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_30_053931) do
+ActiveRecord::Schema.define(version: 2021_08_01_074708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,8 +55,6 @@ ActiveRecord::Schema.define(version: 2021_07_30_053931) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.string "payment_intent"
-    t.string "receipt_url"
     t.float "total_amount"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -78,6 +76,15 @@ ActiveRecord::Schema.define(version: 2021_07_30_053931) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_favorites_on_product_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -146,6 +153,8 @@ ActiveRecord::Schema.define(version: 2021_07_30_053931) do
   add_foreign_key "carts", "payments"
   add_foreign_key "carts", "statuses"
   add_foreign_key "carts", "users"
+  add_foreign_key "favorites", "products"
+  add_foreign_key "favorites", "users"
   add_foreign_key "products", "categories"
   add_foreign_key "products", "conditions"
   add_foreign_key "products", "users"

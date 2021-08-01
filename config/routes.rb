@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'favorite/index'
+  get 'favorite/update'
 devise_for :users, controllers: {registrations:'user/registrations',sessions:'user/sessions'}
  
   resources :carts
@@ -10,6 +12,7 @@ devise_for :users, controllers: {registrations:'user/registrations',sessions:'us
   root to: "pages#home"
   get "/restricted", to: "pages#restricted", as: "restricted"
   post "/home", to: "pages#home", as:"home"
+  post "/home/:id", to: "pages#add_favorite", as:"add_favorite"
   get "/home", to: "pages#home"  
   get "/buyer/product/:id", to: "pages#show", as: "see_product"
   get 'cart_item/index', to:"cart_item#index", as:"cart_item_index"
@@ -23,6 +26,7 @@ devise_for :users, controllers: {registrations:'user/registrations',sessions:'us
   get 'payment/webhook'
   post "user_contact_info/new", to:"user_contact_info#create", as: "create_user_contact_info"
   get "test" , to: "payment#test"
+  delete "favorite/destroy/:id", to:"favorite#destroy", as: "favorite_destroy"
 end
 
 

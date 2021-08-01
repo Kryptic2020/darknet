@@ -25,9 +25,11 @@ body{
 .blue{background-color: blue;}
 .red{background-color: red;}
 .greem{color: green;}
+.t-black{color: #000000;}
 .t-blue{color: blue;}
 .t-red{color: red;}
 .t-greem{color: green;}
+.t-pink{color: rgb(250, 122, 144);}
 .b-radius{border-radius: 5px;}
 .notice{
   background-color: rgb(204, 252, 133);
@@ -36,4 +38,8 @@ body{
   color: green;
   border-radius: 5px;
   border-color: green;  
+}
+.jumbotron {
+  background-color: #000000;
+  color: #ffffff;
 }

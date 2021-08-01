@@ -1,0 +1,45 @@
+<div class="jumbotron">
+  <h1 class="display-5">My Favorites!</h1>
+  <p class="lead"></p>
+  <hr class="my-4">
+</div>
+<div class="d-flex bg-light h-100 b-radius row justify-content-around my-3">
+  <% if @favorites %>
+    <% @favorites.each do |f|%>
+      <div class="card mt-3 mt-3 p-0" style="width: 10rem;height: 25rem">      
+        <%= link_to see_product_path(f.product.id) do %>
+          <div style="height: 20rem" >
+            <div class="my-auto h-50">
+              <%= image_tag f.product.picture, class:"card-img-top h-100" %>
+            </div>
+            <div class="card-body h-50">
+              <h5 class="card-title text-truncate">
+                <%= f.product.title.capitalize %>
+              </h5>               
+              <p class="card-text my-0">
+                <small>Price: $ <%= number_with_precision(f.product.price, precision: 2) %>
+                </small>
+              </p>
+              <p class="card-text my-0 t-greem">
+                <small>Available: <%= f.product.quantity_available %>
+                </small>
+              </p> 
+              <p class="card-text t-red">
+                <small>Sold: <%= f.product.sold %>
+                </small>
+              </p>
+            </div>         
+          </div>
+        <%end%>        
+        <%= form_with url: favorite_destroy_path(f.product.id), local: true, method: :delete do %>
+          <button style="height: 5rem" class="btn t-pink btn-block">
+           <i class="material-icons align-middle">favorite</i>
+                <small>Remove</small>        
+          </button>
+        <%end%>  
+      </div> 
+    <%end%>
+  <%end%>
+</div>
+    
+  
