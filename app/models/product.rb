@@ -22,7 +22,7 @@ class Product < ApplicationRecord
 
   private 
 
-  # remove any whitespace before saving a listing
+  # remove any whitespace before saving a product
   def remove_whitespace
     self.title = self.title.strip
     self.description = self.description.strip
