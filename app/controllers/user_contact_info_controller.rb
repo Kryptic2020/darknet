@@ -1,7 +1,7 @@
 class UserContactInfoController < ApplicationController
   before_action :authenticate_user!  
   before_action :my_cart
-  before_action :user_contact_info_params, only: [:create, :update]
+  before_action :verify_authenticity_token, only: [:show]
 
   def my_cart
     status = Status.first
@@ -12,7 +12,6 @@ class UserContactInfoController < ApplicationController
   def show
     @user_contact_info = UserContactInfo.find_by(user_id:current_user.id)
     @cart = my_cart
-
     cart_id = my_cart
     @cart_items = CartItem.where(cart_id:cart_id)
     @cart = Cart.find(cart_id)
@@ -59,15 +58,15 @@ class UserContactInfoController < ApplicationController
   end  
 
   def update
-    updated = UserContactInfo.find_by(user_id:current_user.id).update(user_contact_info_params)
+    update = UserContactInfo.find_by(user_id:current_user.id)
+    update.update(user_contact_info_params)
     redirect_to user_contact_info_path
   end
 
   def create
     user = User.find(current_user.id)
-    new = UserContactInfo.new(user_contact_info_params)
-    new.user_id = current_user.id
-    new.save
+    new = UserContactInfo.create!(user:user)
+    new.update(user_contact_info_params)    
     redirect_to user_contact_info_path(user.id)
   end
 

@@ -1,14 +1,14 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
   before_action :update_cart_total_amount
+  skip_before_action :verify_authenticity_token, only: [:show, :create]
 
 
   # GET /carts or /carts.json
   def index
   user = current_user.id
     @carts = Cart.where(user:user)
-    @cartitem = CartItem.all
-    
+    @cartitem = CartItem.all    
   end
 
   # GET /carts/1 or /carts/1.json
@@ -38,7 +38,7 @@ class CartsController < ApplicationController
       cart_item = CartItem.create!(cart_id:@my_cart.id, product:product, quantity:quantity, price:price)
       prices = CartItem.where(cart_id:@my_cart.id)      
     end 
-    #redirect path    
+    #redirect path to show action   
     if params[:path_mycart] == "true"
       redirect_to cart_path(@my_cart.id)
     elsif params[:path_home] == "true"
