@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <div class="jumbotron">
-  <h1 class="display-4">Product list!</h1>
+  <h3 class="display-5">Product list!</h3>
   <p class="lead"></p>
   <hr class="my-4">
 </div>
 <div class="container">
   <% @products.each do |product| %>
-    <div class="row mt-5 justify-content-between">
+    <div class="row mt-5 justify-content-between bg-light px-2 py-3">
       <div class="col-2">
         <h6 class="row">Title</h6>
         <p class="row text-truncate"><%= product.title %></p>

@@ -59,14 +59,19 @@ class UserContactInfoController < ApplicationController
 
   def update
     update = UserContactInfo.find_by(user_id:current_user.id)
+    p "----------here ------------"
+    p session
+    p update
+    p user_contact_info_params
     update.update(user_contact_info_params)
     redirect_to user_contact_info_path
   end
 
   def create
     user = User.find(current_user.id)
-    new = UserContactInfo.create!(user:user)
-    new.update(user_contact_info_params)    
+    info = UserContactInfo.new(user:user)
+    info.update(user_contact_info_params)
+    info.save    
     redirect_to user_contact_info_path(user.id)
   end
 

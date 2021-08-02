@@ -25,7 +25,10 @@ body{
 .blue{background-color: blue;}
 .red{background-color: red;}
 .greem{color: green;}
+.black{background-color: #000000;}
+.white{background-color: #ffffff;}
 .t-black{color: #000000;}
+.t-white{color: #ffffff;}
 .t-blue{color: blue;}
 .t-red{color: red;}
 .t-greem{color: green;}
@@ -43,3 +46,17 @@ body{
   background-color: #000000;
   color: #ffffff;
 }
+
+.jumbotron hr{
+  background-color: #ffffff; 
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .jumbotron h3{
+  font-size: 16px;
+}
+}
+
+

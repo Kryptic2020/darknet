@@ -15,4 +15,17 @@ class Product < ApplicationRecord
   validates :shipped_from, presence: true
   validates :delivery_estimated, presence: true
   validates :quantity_available, presence: true
+
+
+  #data santization
+  before_save :remove_whitespace
+
+  private 
+
+  # remove any whitespace before saving a product
+  def remove_whitespace
+    self.title = self.title.strip
+    self.description = self.description.strip
+    self.shipped_from = self.shipped_from.strip
+  end
 end
