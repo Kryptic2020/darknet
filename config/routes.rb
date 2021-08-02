@@ -25,6 +25,7 @@ devise_for :users, controllers: {registrations:'user/registrations',sessions:'us
   get 'payment/success', to: 'payment#success'
   get 'payment/webhook'
   post "user_contact_info/new", to:"user_contact_info#create", as: "create_user_contact_info"
+  put "user_contact_info/:id", to:"user_contact_info#update", as: "update_info"
   get "test" , to: "payment#test"
   delete "favorite/destroy/:id", to:"favorite#destroy", as: "favorite_destroy"
 end

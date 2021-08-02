@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h1 class="display-4">Welcome to Dark Net!</h1>
+  <h3 class="display-5">Welcome to Dark Net!</h3>
   <p class="lead"></p>
   <hr class="my-4">
 </div>
@@ -22,14 +22,14 @@
       Search
     </button >
   </form>
-  <div class="d-flex bg-light h-100 b-radius row justify-content-around my-3" >
+  <div class="d-flex bg-light h-100 b-radius row justify-content-around my-4 py-4" >
     <% if @products %>
       <% @products.each do |product|%>      
-        <div class="card border-dark my-3 mt-3 p-0" style="width: 10rem;height: 26rem;">
+        <div class="card my-3 mt-3 p-0 " style="width: 10rem;height: 26rem;">
           <%= link_to see_product_path(product.id) do %>
             <div style="height: 20rem;" >             
-              <div class="h-50 d-flex red">
-                <%= image_tag product.picture, class:"img-fluid mh-100" %>
+              <div class="h-50 d-flex b-radius">
+                <%= image_tag product.picture, class:"img-fluid rounded mh-100 w-100 p-1" %>
               </div>  
               <div class="h-50 t-black card-body">
                 <h5 class="card-title text-truncate"><%= product.title.capitalize %></h5>            

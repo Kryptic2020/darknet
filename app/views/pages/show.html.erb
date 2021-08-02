@@ -1,9 +1,12 @@
 
 <div class="container" style="max-width: 36rem;">
 <form action="/carts" method="POST">
-  <h3>Hot Deal!</h3>
+  <div class="jumbotron">
+  <h3 class="display-5">Hot Deal!</h3>
+  <p class="lead"></p>
   <hr class="my-4">
-  <div class="card m-auto">
+</div>
+  <div class="card m-auto bg-light">
     <%= image_tag @product.picture, class:"card-img-top"%>
     <div class="card-body">
       <h5 class="card-title">

@@ -1,14 +1,11 @@
 <div class="jumbotron">
-  <h1 class="display-4">My Cart!</h1>
+  <h3 class="display-5">My Cart!</h3>
   <p class="lead"></p>
   <hr class="my-4">
-</div>
-
-
- 
+</div> 
 <div class="container">
   <% @cart_items.each do |item| %>
-    <div class="row mt-5 justify-content-between">
+    <div class="row mt-5 justify-content-between bg-light p-2">
       <div class="col-3">
         <h6 class="row mx-auto">Title</h6>
         <p class="row text-truncate"><%= item.product.title %></p>
@@ -30,7 +27,7 @@
       </div>
       <div class="row col-12 mx-auto mt-1 mb-3">      
         <%= link_to 'See', cart_item_show_path(item.id), class:"btn btn-primary btn-sm mr-1" %>
-        <% if @cart.payment.receipt_url%>
+        <% if !@cart.payment.receipt_url%>
         <%= link_to 'Edit', cart_item_edit_path(item.id), class:"btn btn-warning btn-sm mr-1" %>
         <%= link_to 'Del', cart_item_destroy_path(item.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %>  
         <%end%>      
@@ -42,15 +39,18 @@
 
 
 
-<div class="jumbotron">
-<hr class="my-4">
-  <h1 class="display-5">Total Amount   $AUD <%= number_with_precision(@cart.total_amount, precision: 2) %></h1>
-  <p class="lead"></p>
-  
+<div class="jumbotron mt-5">
+  <hr class="my-4">
+    <div class="d-flex justify-content-between">
+      <h3 class="display-5">Total Amount</h3> 
+      <h3 class="display-5">  $AUD <%= number_with_precision(@cart.total_amount, precision: 2) %></h3>
+    </div>
+  <p class="lead"></p>  
 </div>
-<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-<a href="<%= has_info? ? user_contact_info_path : new_user_contact_info_path %>"><button class="btn btn-primary btn-lg btn-block my-3 <%= user_signed_in? ? nil : "disabled" %>">Checkout!</button></a>
-
+<% if !@cart.payment.receipt_url%>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <a href="<%= has_info? ? user_contact_info_path : new_user_contact_info_path %>"><button class="btn btn-primary btn-lg btn-block my-3 <%= user_signed_in? ? nil : "disabled" %>">Checkout!</button></a>
+<% end %>
 <%= link_to 'Continue Shopping', root_path, class:"btn btn-info btn-lg btn-block my-3" %>
 
 

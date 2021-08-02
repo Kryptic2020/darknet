@@ -1,10 +1,9 @@
 <div class="container" style="max-width: 36rem;">
-
   <div class="jumbotron">
-  <h1 class="display-5">MyCart Item!</h1>
-  <p class="lead"></p>
-  <hr class="my-4">
-</div>
+    <h3 class="display-5">MyCart Item!</h3>
+    <p class="lead"></p>
+    <hr class="my-4">
+  </div>
   <div class="card m-auto">
     <%= image_tag @product.picture, class:"card-img-top"%>
     <div class="card-body">
@@ -25,28 +24,24 @@
       </p>
       <p class="card-text">Delivery estimated 
         <%= @product.delivery_estimated%> days
-      </p>
-
-      
-        
+      </p>        
       <p class="card-text">Quantity 
         <%= @cart_item.quantity%> 
+      </p>        
+      <p class="card-text t-red">Sold 
+        <%= @product.sold%>
       </p>
-        
-        <p class="card-text t-red">Sold 
-          <%= @product.sold%>
-        </p>
-        <p class="card-text t-greem">Available 
-          <%= @product.quantity_available%>
-        </p>
-        <input type="hidden" name="product_id" value="<%= @product.id %>">
-        <p class="card-text">
-          <small class="text-muted">Last updated 
-            <%= @product.created_at%>
-          </small>
-        </p>
-      </div>
+      <p class="card-text t-greem">Available 
+        <%= @product.quantity_available%>
+      </p>
+      <input type="hidden" name="product_id" value="<%= @product.id %>">
+      <p class="card-text">
+        <small class="text-muted">Last updated 
+          <%= @product.created_at%>
+        </small>
+      </p>
     </div>
+  </div>
  
 
   <%= link_to "Back" , cart_path(@cart_item.cart_id), class:"btn btn-info btn-lg btn-block my-3" %>
