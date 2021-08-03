@@ -120,4 +120,7 @@ Rails.application.configure do
 
   #Config action mailer url for devise install
   config.action_mailer.default_url_options = { host: 'dashboard.heroku.com' }
+  
+  #Config assets to be conpiled
+  config.assests.compile = true
 end
