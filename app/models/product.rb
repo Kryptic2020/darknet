@@ -17,11 +17,29 @@ class Product < ApplicationRecord
   validates :quantity_available, presence: true
 
 
-  def self.search(query, option)
-    if query && query.length > 0 && option
-      return self.where("LOWER(#{option}) LIKE ?","%#{query.downcase}%")
+  def self.search( search, category, filter)
+    key = ""
+    value = :asc
+    if filter == "price-asc"
+      key = "price"      
+    elsif filter == "price-desc"
+      key = "price"
+      value = :desc
+    elsif filter == "title-asc"
+      key = "title"      
+    else
+      key = "title"
+      value = :desc
+    end  
+
+    if search != "" && category == ""
+      return self.where("LOWER(#{:title}) LIKE ?","%#{search.downcase}%").order(key => value)
+    elsif search != "" && category != "" 
+      return self.order(key => value).where("LOWER(#{:title}) LIKE ?","%#{search.downcase}%").where(category_id:category.to_i).includes(:category)
+    elsif search == "" && category != ""
+      return self.order(key => value).where("LOWER(#{:title}) LIKE ?","%#{search.downcase}%").where(category_id:category.to_i).includes(:category)      
     end
-    return self.all
+    return self.order(key => value).includes(:category)
   end 
 
   #data santization
