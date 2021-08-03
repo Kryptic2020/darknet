@@ -1,4 +1,4 @@
-<div class="jumbotron">
+<div class="jumbotron mt-5">
   <h3 class="display-5">Welcome to Dark Net!</h3>
   <p class="lead"></p>
   <hr class="my-4">
@@ -6,21 +6,60 @@
 
 <div class="container">
   <form action="<%= home_path%>" method="POST" class="form-inline row">
-    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-    <div class="col p-0">
-      <input name="search" class="form-control w-100" type="search" placeholder="Search" aria-label="Search">
+    <a class="nav-link dropdown-toggle col-12" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Filter
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <div class="col my-2 d-flex dropdown-item">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="filter" id="radios1" value="asc" checked>
+          <label class="form-check-label" for="radios1">
+            <i class="material-icons pr-2">arrow_downward</i>
+            By "Name"
+          </label>
+        </div>    
+        <div class="form-check ml-sm-4">
+          <input class="form-check-input" type="radio" name="filter" id="radios2" value="desc">
+          <label class="form-check-label" for="radios2">
+            <i class="material-icons pr-2">arrow_upward</i>By "Name"
+          </label>
+        </div>
+      </div>
+        <div class="col my-2 d-flex ">
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="filter" id="radios1" value="asc" checked>
+          <label class="form-check-label" for="radios1">
+            <i class="material-icons pr-2">arrow_downward</i>
+            By "Name"
+          </label>
+        </div>    
+        <div class="form-check ml-sm-4">
+          <input class="form-check-input" type="radio" name="filter" id="radios2" value="desc">
+          <label class="form-check-label" for="radios2">
+            <i class="material-icons pr-2">arrow_upward</i>By "Name"
+          </label>
+        </div>
+      </div>
     </div>
-    <select name="category" class="custom-select col-4 col-sm-3 mx-sm-1 " id="Select">    
-      <option value="">Choose...</option>
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <div class="col-12 p-0 d-flex justify-content-between">
+    
+      <input name="search" class="form-control col-5 col-sm-6" type="search" placeholder="Search" aria-label="Search">
+    
+    <select name="category" class="custom-select col-4 col-sm-3" id="Select">    
+      <option value="">Category...</option>
       <% @categories.each do |category| %>
         <option type="text" value=<%= category.id %> >
           <%= category.name %>
         </option>
       <%end%>
     </select> 
-    <button class="btn btn-outline-success col-3 col-sm-2" type="submit">
+ 
+    <button class="btn btn-outline-success col-3 " type="submit">
       Search
     </button >
+    </div>
+    
   </form>
   <div class="d-flex bg-light h-100 b-radius row justify-content-around my-4 py-4" >
     <% if @products %>
@@ -58,6 +97,7 @@
       <%end%>
     <%end%>
   </div>
+  
 </div>
 
 <script>

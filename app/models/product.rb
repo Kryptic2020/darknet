@@ -17,6 +17,13 @@ class Product < ApplicationRecord
   validates :quantity_available, presence: true
 
 
+  def self.search(query, option)
+    if query && query.length > 0 && option
+      return self.where("LOWER(#{option}) LIKE ?","%#{query.downcase}%")
+    end
+    return self.all
+  end 
+
   #data santization
   before_save :remove_whitespace
 

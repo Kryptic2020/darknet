@@ -26,6 +26,7 @@ body{
 .red{background-color: red;}
 .greem{color: green;}
 .black{background-color: #000000;}
+.grey{background-color:#343A3F;}
 .white{background-color: #ffffff;}
 .t-black{color: #000000;}
 .t-white{color: #ffffff;}
@@ -43,8 +44,9 @@ body{
   border-color: green;  
 }
 .jumbotron {
-  background-color: #000000;
+  background-color: #343A3F;
   color: #ffffff;
+  margin-top: 50px;
 }
 
 .jumbotron hr{

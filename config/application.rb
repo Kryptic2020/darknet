@@ -34,5 +34,8 @@ module Darknet
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # generate static assets 
+    config.serve_static_assets = true
   end
 end
