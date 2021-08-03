@@ -122,5 +122,5 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'dashboard.heroku.com' }
   
   #Config assets to be conpiled
-  config.assests.compile = true
+  config.assets.compile = true
 end
