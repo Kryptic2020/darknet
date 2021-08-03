@@ -42,7 +42,7 @@ class CartsController < ApplicationController
     if params[:path_mycart] == "true"
       redirect_to cart_path(@my_cart.id)
     elsif params[:path_home] == "true"
-      redirect_to root_path, notice: "Added to cart!"
+      redirect_to listing_path, notice: "Added to cart!"
     end 
  
     #Update product Sold and available

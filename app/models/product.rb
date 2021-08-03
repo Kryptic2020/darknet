@@ -32,12 +32,12 @@ class Product < ApplicationRecord
       value = :desc
     end  
 
-    if search != "" && category == ""
+    if search && search != "" && category == ""
       return self.where("LOWER(#{:title}) LIKE ?","%#{search.downcase}%").order(key => value)
-    elsif search != "" && category != "" 
+    elsif search && search != "" && category && category != "" 
       return self.order(key => value).where("LOWER(#{:title}) LIKE ?","%#{search.downcase}%").where(category_id:category.to_i).includes(:category)
     elsif search == "" && category != ""
-      return self.order(key => value).where("LOWER(#{:title}) LIKE ?","%#{search.downcase}%").where(category_id:category.to_i).includes(:category)      
+      return self.order(key => value).where(category_id:category.to_i).includes(:category)      
     end
     return self.order(key => value).includes(:category)
   end 
