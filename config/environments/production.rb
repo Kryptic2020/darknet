@@ -135,7 +135,7 @@ Rails.application.configure do
   
 
   #Config assets to be conpiled
-  #config.assets.compile = true
+  config.assets.compile = true
 end
 
   

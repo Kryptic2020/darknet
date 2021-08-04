@@ -6,51 +6,12 @@ class PagesController < ApplicationController
 
 
   def test
-    if current_user
-      @user = User.find(current_user.id)
-      p "------------------------------xzz"
-      p 
-     #UserMailer.with(user: @user).welcome_email.deliver_now
-      UserMailer.welcome_email(@user).deliver
-       
-          
-    end
+    
   end
 
-  def listing
-    
-    @categories = Category.all
-    
-    p "hello----"
-    p params[:search]
+  def listing    
+    @categories = Category.all        
     @products = Product.search(params[:search],params[:category],params[:filter])
-    
-    #@products = Product.search(params[:search],params[:category],params[:filter])
-    # @categories = Category.all
-    # @products = Product.order(price: :asc)
-    # p "-----------------------------hello----"
-    # p @products
-    # if params[:category] != ""
-    #   category = params[:category]
-    # end
-    # if params[:search] != ""
-    #   title = params[:search]
-    # end
-    # if category && title
-    #   @title = Product.where(Product.arel_table[:title].matches("%#{title}%"))
-    #   @products = []
-    #   @title.each do |cat|       
-    #     if cat.category_id.to_s == category
-    #     @product << cat
-    #     end
-    #   end
-    # elsif category &&!title
-    #   @products = Product.where(category:category)
-    # elsif !category && title
-    #   @products = Product.where(Product.arel_table[:title].matches("%#{title}%"))
-    # else
-    # @products = Product.order(price: :desc)
-    # end    
   end
 
   def show
