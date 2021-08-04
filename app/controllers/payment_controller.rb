@@ -30,6 +30,7 @@ class PaymentController < ApplicationController
       cart.payment.update(receipt_url:@receipt,payment_intent_id:payment_id)
       status = Status.last
       cart.update(status:status) 
+      UserMailer.receipt_email(user, @receipt, cart).deliver
       render plain: "Success"
     else
       redirect_to root_path, notice: "Your Payment has been #{@authorization}, please try again later"

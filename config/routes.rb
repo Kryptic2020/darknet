@@ -13,6 +13,7 @@ devise_for :users, controllers: {registrations:'user/registrations',sessions:'us
   #get "/restricted", to: "pages#restricted", as: "restricted"
   #post "/home", to: "pages#home", as:"home"
   get "/", to: "pages#index", as:"index"
+  get "/test", to: "pages#test", as:"email_now"
   get "/listing", to: "pages#listing", as: "listing"
   post "/listing/:id", to: "pages#add_favorite", as:"add_favorite"
   get "/buyer/product/:id", to: "pages#show", as: "see_product"

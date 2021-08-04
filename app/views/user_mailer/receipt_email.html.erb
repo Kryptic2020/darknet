@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+  <h1>Hello, <%= @user.email %> !</h1>
+
+  <br>
+  <br>
+  <br>
+    <h3>Welcome to darknet2.herokuapp.com ! </h3>
+<br>
+   <br> 
+    <p>
+      You have successfully signed up to example.com,
+      your username is: .<br>
+    </p>
+    <a href="<%= @receipt%>">Click here to see your receipt!</a>
+     <p>This is your cart number <%= @cart.id %></p>
+    <p>
+      Follow this link: <%= @url %>, to see whats new!
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
