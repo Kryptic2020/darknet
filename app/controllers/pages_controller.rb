@@ -1,6 +1,21 @@
 class PagesController < ApplicationController
   before_action :authenticate_user!, only: [:add_favorite]
   before_action :set_cart_item, only: [:show]
+ 
+ 
+
+
+  def test
+    if current_user
+      @user = User.find(current_user.id)
+      p "------------------------------xzz"
+      p 
+     #UserMailer.with(user: @user).welcome_email.deliver_now
+      UserMailer.welcome_email(@user).deliver
+       
+          
+    end
+  end
 
   def listing
     

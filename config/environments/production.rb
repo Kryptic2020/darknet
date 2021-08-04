@@ -2,6 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -120,7 +121,21 @@ Rails.application.configure do
 
   #Config action mailer url for devise install
   config.action_mailer.default_url_options = { host: 'dashboard.heroku.com' }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.smtp_settings = {
+  #   :user_name => Rails.application.credentials.sendgrid[:username],
+  #   :password => Rails.application.credentials.sendgrid[:password], # This is the secret sendgrid API key which was issued during API key creation
+  #   :domain => 'gmail.com',
+  #   :address => 'smtp.sendgrid.net',
+  #   :port => 587,
+  #   :authentication => :plain,
+  #   :enable_starttls_auto => true
+  # }
   
+
   #Config assets to be conpiled
-  config.assets.compile = true
+  #config.assets.compile = true
 end
+
+  

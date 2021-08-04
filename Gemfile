@@ -58,3 +58,6 @@ gem 'material_icons'
 gem "aws-sdk-s3", "~> 1.96"
 
 gem "stripe", "~> 5.37"
+
+gem "sendgrid-ruby", "~> 6.4"
+gem "figaro"
