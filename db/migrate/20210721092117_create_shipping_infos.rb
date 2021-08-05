@@ -1,6 +1,6 @@
-class CreateUserContactInfos < ActiveRecord::Migration[6.1]
+class CreateShippingInfos < ActiveRecord::Migration[6.1]
   def change
-    create_table :user_contact_infos do |t|
+    create_table :shipping_infos do |t|
       t.integer :street_number
       t.string :unit
       t.string :street_name

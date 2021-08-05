@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+  get 'message/get'
+  get 'message/send'
+  get 'message/delete'
+  get 'message/update'
   get 'favorite/index'
   get 'favorite/update'
 devise_for :users, controllers: {registrations:'user/registrations',sessions:'user/sessions'}
  
   resources :carts
   resources :products
-  resources :user_contact_info
+  resources :shipping_info
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -26,10 +30,16 @@ devise_for :users, controllers: {registrations:'user/registrations',sessions:'us
   post "/payments/webhook", to: "payment#webhook"
   get 'payment/success', to: 'payment#success'
   get 'payment/webhook'
-  post "user_contact_info/new", to:"user_contact_info#create", as: "create_user_contact_info"
-  put "user_contact_info/:id", to:"user_contact_info#update", as: "update_info"
+  post "shipping_info/new", to:"shipping_info#create", as: "create_shipping_info"
+  put "shipping_info/:id", to:"shipping_info#update", as: "update_info"
   get "test" , to: "payment#test"
   delete "favorite/destroy/:id", to:"favorite#destroy", as: "favorite_destroy"
+  get "/message/:id", to: "message#show", as: "message"
+  post "/message", to: "message#send_message", as: "message_post"
+  get "/dashboard/message/:id", to: "products#show_message", as: "get_message"
+  post "/dashboard/send-message", to: "products#send_message", as: "send_message_post"
+  get "/dashboard", to: "products#dashboard", as: "dashboard"
+
 end
 
 

@@ -4,6 +4,13 @@
   <h3 class="display-5">Product list!</h3>
   <p class="lead"></p>
   <hr class="my-4">
+  <%= link_to dashboard_path() do %>
+  <button class=" col-2 mt-3 white border-light mx-2 rounded">
+    <i class="material-icons float-left align-middle ">dashboard</i>
+    <small> Go To Dashboard</small>              
+  </button>
+  <%end%> 
+</div>
 </div>
 <div class="container">
   <% @products.each do |product| %>
