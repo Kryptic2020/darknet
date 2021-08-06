@@ -18,7 +18,7 @@
 
  */
 @import "bootstrap";
-body{
+body{  
   margin: 0;
   padding: 0;
   box-sizing: border-box;}
@@ -27,6 +27,7 @@ body{
 .greem{color: green;}
 .black{background-color: #000000;}
 .grey{background-color:#343A3F;}
+.l-grey{background-color:#5a6065;}
 .white{background-color: #ffffff;}
 .t-black{color: #000000;}
 .t-white{color: #ffffff;}
@@ -51,8 +52,10 @@ body{
 .jumbotron hr{
   background-color: #ffffff; 
 }
-.message-box{
-  
+.dash{
+  min-height: 200px;
+  max-height: 900px;
+  overflow-y: scroll;  
 }
 
 

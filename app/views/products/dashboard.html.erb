@@ -2,19 +2,41 @@
   <h3 class="display-5">Dashboard</h3>
   <p class="lead"></p>
   <hr class="my-4">
-</div>
-<div id="message-box" class="rounded  col-3 grey container p-3" >
-<% @message_list.each do |item| %>
-<div class="col-12 rounded p-3 bg-light">
-  <p class="text-truncate col"><%= item.user.username%></p>
-  <p class="text-truncate col"><%= item.product.title%></p>
-  <p class="text-truncate col"><%= item.created_at%></p>
-</div>
-<%= link_to get_message_path(item.id) do %>
-  <button class=" mt-3 white border-light mx-2 rounded">
-    <i class="material-icons float-left align-middle ">question_answer</i>
-    <small>Answer Buyer</small>              
+  <a href="#inbox">
+  <button class=" col-7 col-sm-6 col-md-4 col-lg-3 mt-3 bg-info border-info mx-1 rounded">
+    <i class="material-icons float-left align-middle ">dashboard</i>
+    <small> Go To Inbox</small>              
   </button>
-  <%end%> 
-  <%end%> 
+  </a> 
+</div>
+<div class="dash d-flex col row">
+  <div class="bg-light col col-md-8 p-3">
+    <h3 class="py-2">My Products & Perfomance</h3>
+    <%@prod_performance.each do |prod|%>
+    <div class="bg-dark t-white p-3 rounded my-2">
+      <p>Title: <%= prod.title%></p>
+      <p>Available: <%= prod.quantity_available%></p>
+      <p>Total Sold: <%= prod.sold%></p>
+      <p>Unit Price: AUD$ <%= prod.price%></p>   
+      <p>Total Revenue: AUD$ <%= prod.price * prod.sold%></p>
+      <p>Last Update:  <%= prod.updated_at.strftime('%a, %d %b %Y %H:%M:%S')%></p>
+    </div>
+    <%end%>
+  </div>
+  <div id="inbox" class="dash rounded col-0 col-md-4 grey container p-3" >
+    <h3 class="t-white py-2">My Inbox</h3>
+    <% @message_list.each do |item| %>
+    <div class="col-12 rounded p-3 bg-light my-2">
+      <p class="text-truncate col">Buyer: <%= item.user.username%></p>
+      <p class="text-truncate col">product: <%= item.product.title%></p>
+      <p class="text-truncate col">Date: <%= item.created_at.strftime('%a, %d %b %Y %H:%M:%S')%></p>
+    <%= link_to get_message_path(item.product.id, item.user.id) do %>
+      <button class=" mt-3 white bg-info p-1 border-light mx-2 rounded">
+        <i class="material-icons float-left align-middle ">question_answer</i>
+        <small>Answer Buyer</small>              
+      </button>
+      </div>
+      <%end%> 
+    <%end%> 
+  </div>
 </div>

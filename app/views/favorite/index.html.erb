@@ -1,7 +1,8 @@
 <div class="jumbotron">
   <h3 class="display-5">My Favorites!</h3>
   <p class="lead"></p>
-  <hr class="my-4">
+  <hr class="my-3">
+  <%= link_to "Go back!", listing_path, class:"btn btn-info mt-3" %> 
 </div>
 <div class="container">
   <div class="d-flex  bg-light h-100 b-radius row justify-content-around my-3">
@@ -32,10 +33,10 @@
               </div>         
             </div>
           <%end%>        
-          <%= form_with url: favorite_destroy_path(f.product.id), local: true, method: :delete do %>
-            <button style="height: 5rem" class="btn t-pink btn-block">
-            <i class="material-icons align-middle">favorite</i>
-                  <small>Remove</small>        
+          <%= form_with url: favorite_destroy_path(f.product.id),class:"mx-auto", local: true, method: :delete do %>
+            <button class="btn border-light bg-light t-pink btn-lg">
+            <i class="material-icons t-pink align-middle">favorite</i>
+                  <small class="t-pink">Remove</small>        
             </button>
           <%end%>  
         </div> 

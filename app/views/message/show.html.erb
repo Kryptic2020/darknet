@@ -1,13 +1,14 @@
 <div class="jumbotron mt-5">
   <h3 class="display-5">How can I help you?</h3>
   <p class="lead"></p>
-  <hr class="my-4">
+  <hr class="my-3">
+  <%= link_to "Go back!", listing_path, class:"btn btn-info mt-3" %>
 </div>
-<div id="message-box" class="message-box rounded  col-6 bg-light container p-3" >
+<div id="message-box" class="message-box rounded  col col-sm-6 bg-light container p-3" >
   
   <textarea rows="8" class="col text-muted" readonly>
   <% @messages.each do |message|%>
-  <%=message.message%>  <%=message.created_at%>
+  <%=message.message%>  <%=message.created_at.strftime('%a, %d %b %Y %H:%M:%S')%>
   <%end%>
   </textarea>
   <form action="<%= message_post_path%>" method="POST">
@@ -19,7 +20,7 @@
       <button type="submit" class="btn btn-primary mt-2" onclick="submitForm()">Send</button> 
     </div>  
   </form>
-  <p><%= link_to "Go back!", listing_path, class:"btn btn-dark mt-3" %></p>  
+  
 </div>  
 
 <script type="text/javascript">

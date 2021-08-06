@@ -36,7 +36,7 @@ devise_for :users, controllers: {registrations:'user/registrations',sessions:'us
   delete "favorite/destroy/:id", to:"favorite#destroy", as: "favorite_destroy"
   get "/message/:id", to: "message#show", as: "message"
   post "/message", to: "message#send_message", as: "message_post"
-  get "/dashboard/message/:id", to: "products#show_message", as: "get_message"
+  get "/dashboard/message/:p/:u", to: "products#show_message", as: "get_message"
   post "/dashboard/send-message", to: "products#send_message", as: "send_message_post"
   get "/dashboard", to: "products#dashboard", as: "dashboard"
 

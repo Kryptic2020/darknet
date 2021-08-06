@@ -5,6 +5,12 @@
   <h3 class="display-5">Hot Deal!</h3>
   <p class="lead"></p>
   <hr class="my-4">
+   <%= link_to message_path(@product.id) do %>
+    <button class=" mt-3 white border-light mx-2 rounded">
+      <i class="material-icons float-left align-middle ">question_answer</i>
+      <small>Ask Seller</small>              
+    </button>
+  <%end%> 
 </div>
   <div class="card m-auto bg-light">
     <%= image_tag @product.picture, class:"card-img-top"%>

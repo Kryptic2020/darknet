@@ -3,8 +3,15 @@
     <h3 class="display-5">MyCart Item!</h3>
     <p class="lead"></p>
     <hr class="my-4">
+    <div class="d-flex justify-content-between">
+     <%= link_to message_path(@product.id) do %>
+              <button class=" mt-3 bg-info border-info p-1 mx-2 rounded">
+                <i class="material-icons float-left align-middle ">question_answer</i>
+                <small>Ask Seller</small>              
+              </button>
+              <%end%> <%= link_to "Back" , cart_path(@cart_item.cart_id), class:" mt-3 bg-info border-info px-3 py-1 mx-2 rounded t-black" %></div>
   </div>
-  <div class="card m-auto">
+  <div class="card m-auto mb-5">
     <%= image_tag @product.picture, class:"card-img-top"%>
     <div class="card-body">
       <h5 class="card-title">
@@ -41,9 +48,5 @@
         </small>
       </p>
     </div>
-  </div>
- 
-
-  <%= link_to "Back" , cart_path(@cart_item.cart_id), class:"btn btn-info btn-lg btn-block my-3" %>
-  
+  </div> 
 </div>

@@ -5,14 +5,16 @@
   <p class="lead"></p>
   <hr class="my-4">
   <%= link_to dashboard_path() do %>
-  <button class=" col-2 mt-3 white border-light mx-2 rounded">
+  <button class=" col-7 col-sm-6 col-md-4 col-lg-3 mt-3 bg-info border-info mx-1 rounded">
     <i class="material-icons float-left align-middle ">dashboard</i>
     <small> Go To Dashboard</small>              
   </button>
   <%end%> 
 </div>
 </div>
+
 <div class="container">
+<%= link_to 'New Product', new_product_path, class:"btn btn-info" %>
   <% @products.each do |product| %>
     <div class="row mt-5 justify-content-between bg-light px-2 py-3">
       <div class="col-2">
@@ -40,7 +42,7 @@
         <p class="row"><%= product.category.name %></p>
       </div>
 
-      <div class="row col-12 mx-auto mt-1 mb-3">      
+      <div class="d-flex mx-auto mt-1 mb-3">      
         <%= link_to 'See', product, class:"btn btn-primary btn-sm mr-1" %>
         <%= link_to 'Edit', edit_product_path(product), class:"btn btn-warning btn-sm mr-1" %>
         <%= link_to 'Del', product, method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger btn-sm" %>        
@@ -50,5 +52,5 @@
 
 <br>
 
-<%= link_to 'New Product', new_product_path, class:"btn btn-info mb-3" %>
+
 </div>
