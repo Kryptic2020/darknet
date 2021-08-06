@@ -3,7 +3,7 @@
   <p class="lead"></p>
   <hr class="my-4">
 </div>
-<%= simple_form_for(@user_contact_info, :url => create_user_contact_info_path ) do |f| %>
+<%= simple_form_for(@shipping_info, :url => create_shipping_info_path ) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 

@@ -1,7 +1,7 @@
-class UserContactInfoController < ApplicationController
+class ShippingInfoController < ApplicationController
   before_action :authenticate_user!  
   before_action :my_cart
-  before_action :verify_authenticity_token, only: [:show]
+  before_action :verify_authenticity_token, only: [:show, :update]
 
   def my_cart
     status = Status.first
@@ -10,7 +10,7 @@ class UserContactInfoController < ApplicationController
   end
 
   def show
-    @user_contact_info = UserContactInfo.find_by(user_id:current_user.id)
+    @shipping_info = ShippingInfo.find_by(user_id:current_user.id)
     @cart = my_cart
     cart_id = my_cart
     @cart_items = CartItem.where(cart_id:cart_id)
@@ -50,33 +50,29 @@ class UserContactInfoController < ApplicationController
   end
 
   def new
-    @user_contact_info = UserContactInfo.new    
+    @shipping_info = ShippingInfo.new    
   end
 
   def edit
-    @user_contact_info = UserContactInfo.find_by(user_id:current_user.id)
+    @shipping_info = ShippingInfo.find_by(user_id:current_user.id)
   end  
 
   def update
-    update = UserContactInfo.find_by(user_id:current_user.id)
-    p "----------here ------------"
-    p session
-    p update
-    p user_contact_info_params
-    update.update(user_contact_info_params)
-    redirect_to user_contact_info_path
+    update = ShippingInfo.find_by(user_id:current_user.id)
+    update.update(shipping_info_params)
+    redirect_to shipping_info_path
   end
 
   def create
     user = User.find(current_user.id)
-    info = UserContactInfo.new(user:user)
-    info.update(user_contact_info_params)
+    info = ShippingInfo.new(user:user)
+    info.update(shipping_info_params)
     info.save    
-    redirect_to user_contact_info_path(user.id)
+    redirect_to shipping_info_path(user.id)
   end
 
   private
-  def user_contact_info_params
-    params.require(:user_contact_info).permit(:unit,:street_number,:street_name,:suburb,:postcode,:phone) 
+  def shipping_info_params
+    params.require(:shipping_info).permit(:unit,:street_number,:street_name,:suburb,:postcode,:phone) 
   end
 end

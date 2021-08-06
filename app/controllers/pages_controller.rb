@@ -12,6 +12,11 @@ class PagesController < ApplicationController
   def listing    
     @categories = Category.all        
     @products = Product.search(params[:search],params[:category],params[:filter])
+
+    @message = Message.new
+    @messages = "hello"
+p "---------------- noisss--------------------"
+
   end
 
   def show
@@ -30,8 +35,18 @@ class PagesController < ApplicationController
   def restricted
   end 
 
+  def send_message
+    
+  end
+
   def set_cart_item
   
+    
+  end
+
+  def message_params
+
+  param.require(:message).permit(:message)
     
   end
    

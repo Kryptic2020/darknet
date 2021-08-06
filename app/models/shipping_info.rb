@@ -1,4 +1,4 @@
-class UserContactInfo < ApplicationRecord
+class ShippingInfo < ApplicationRecord
   belongs_to :user
   validates :street_number, presence: true
   validates :unit, presence: true
