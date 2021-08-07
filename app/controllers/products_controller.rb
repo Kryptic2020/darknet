@@ -70,10 +70,7 @@ class ProductsController < ApplicationController
 
   def send_message
     message = "#{current_user.username}:  #{params[:message]}"
-    my_message = Message.create(muted:true, user_id:current_user.id, product_id:params[:product_id], message:message)    
-       p "---------"
-       my_message.update(muted:true)
-    p my_message
+    my_message = Message.create(muted:true, user_id:current_user.id, product_id:params[:product_id], message:message)          
   end
 
 

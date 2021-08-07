@@ -5,8 +5,8 @@ class CreateShippingInfos < ActiveRecord::Migration[6.1]
       t.string :unit
       t.string :street_name
       t.string :suburb
-      t.string :phone
-      t.string :postcode
+      t.integer :phone
+      t.integer :postcode
 
       t.timestamps
     end

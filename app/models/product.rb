@@ -7,9 +7,9 @@ class Product < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :users, through: :messages, dependent: :destroy
   has_many :carts, through: :cart_items, dependent: :destroy
-
   has_one_attached :picture
   
+  #validations
   validates :picture, presence: true
   validates :title, presence: true
   validates :description, presence: true
@@ -18,7 +18,7 @@ class Product < ApplicationRecord
   validates :delivery_estimated, presence: true
   validates :quantity_available, presence: true
 
-
+  #Class Method search, sorting and filtering with eagle loading
   def self.search( search, category, filter)
     key = ""
     value = :asc

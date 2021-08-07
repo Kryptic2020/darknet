@@ -1,4 +1,5 @@
 class MessageController < ApplicationController
+before_action :authenticate_user!
 
   def show 
     @product_id = params[:id]
