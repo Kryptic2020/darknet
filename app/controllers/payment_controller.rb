@@ -3,21 +3,36 @@ class PaymentController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:webhook]
   
   # Fetch @cart and send to HTML - payment_success GET  /payment/success
-  def success  
-    @cart = Cart.find(params[:cartId])     
+  def success 
+    cart_id = params[:cartId] 
+    @cart = Cart.find(cart_id) 
   end
+
+#    StripeEvent.event_retriever = lambda do |params|
+#     if params[:livemode]
+#         ::Stripe::Event.retrieve(params[:id])
+#     elsif Rails.env.development?
+#         # This will return an event as is from the request (security concern in production)
+#     ::Stripe::Event.construct_from(params.deep_symbolize_keys)
+#     else
+#         nil
+#     end
+# end
   
   #From Stripe call back
   def webhook  
     # Receive call back from Stripe API with payment intent; 
     payment_id = params[:data][:object][:payment_intent]
-
+    p "-------webhook--------"
+    #p params[:data][:object][:payment_intent]
+    # pi_3JLntvEe6AwIaPMz1TidxgXz
+    
     # Retrieve payment information from Stripe API;
-    payment = Stripe::PaymentIntent.retrieve(payment_id)    
-    @authorization = payment.charges.data[0].outcome.type
+    #payment = Stripe::PaymentIntent.retrieve(payment_id)    
+    #@authorization = payment.charges.data[0].outcome.type
 
     # If payment succeed, update product, update cart, send email with receipt to User, redirect to success page.
-    if @authorization == "authorized" 
+    if @authorization && @authorization == "authorized" 
       @receipt = payment.charges.data[0].receipt_url
       cart_id = payment.metadata.cart_id
       user_id = payment.metadata.user_id

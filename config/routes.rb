@@ -23,8 +23,8 @@ Rails.application.routes.draw do
  
   # Payments routes
   post "/payments/webhook", to: "payment#webhook"
-  get 'payment/success', to: 'payment#success'
-  get 'payment/webhook'
+  get 'payments/success', to: 'payment#success'
+  get 'payments/webhook'
 
   # Shipping_info routes
   post "shipping_info/new", to:"shipping_info#create", as: "create_shipping_info"

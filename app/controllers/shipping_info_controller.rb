@@ -25,7 +25,8 @@ class ShippingInfoController < ApplicationController
     # Sending @shipping_info to HTML
     @shipping_info = ShippingInfo.find_by(user_id:current_user.id)
 
-    #Gathering data to Create Stripe Session    
+    #Gathering data to Create Stripe Session  
+    @cart = my_cart  
     cart_id = my_cart
     @cart_items = CartItem.where(cart_id:cart_id)
     @cart = Cart.find(cart_id)
@@ -57,7 +58,7 @@ class ShippingInfoController < ApplicationController
           user_id: @current_user.id
         }
       },
-      success_url: "#{root_url}payment/success?userId=#{@current_user.id}&cartId=#{@cart.id}",
+      success_url: "#{root_url}payments/success?userId=#{@current_user.id}&cartId=#{@cart.id}",
       cancel_url: "#{root_url}carts"
     )
     @session_id = session.id
