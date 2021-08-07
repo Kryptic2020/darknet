@@ -22,9 +22,9 @@ Rails.application.routes.draw do
   delete 'cart_item/destroy/:id', to:"cart_item#destroy", as:"cart_item_destroy"
  
   # Payments routes
-  post "/payments/webhook", to: "payment#webhook"
-  get 'payments/success', to: 'payment#success'
-  get 'payments/webhook'
+  post "/payment/webhook", to: "payment#webhook"
+  get '/payment/success', to: 'payment#success'
+  get '/payment/webhook'
 
   # Shipping_info routes
   post "shipping_info/new", to:"shipping_info#create", as: "create_shipping_info"

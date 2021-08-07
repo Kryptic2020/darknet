@@ -58,7 +58,7 @@ class ShippingInfoController < ApplicationController
           user_id: @current_user.id
         }
       },
-      success_url: "#{root_url}payments/success?userId=#{@current_user.id}&cartId=#{@cart.id}",
+      success_url: "#{root_url}payment/success?userId=#{@current_user.id}&cartId=#{@cart.id}",
       cancel_url: "#{root_url}carts"
     )
     @session_id = session.id
