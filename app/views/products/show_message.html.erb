@@ -1,52 +1,53 @@
-<div class="jumbotron mt-5">
+<div class="jumbotron mx-auto col-lg-8">
   <h3 class="display-5">How can I help you?</h3>
-  <p class="lead"></p>
   <hr class="my-3">
   <%= link_to "Go back!", dashboard_path, class:"btn btn-info" %> 
 </div>
-<div id="message-box" class="message-box rounded  col col-sm-6 bg-light container p-3" >
-  
+<div id="message-box" class="message-box rounded  col col-lg-8 bg-light container p-3" >  
   <textarea rows="8" class="col text-muted" readonly>
-  <% @messages.each do |message|%>
-  <%=message.message%>  <%=message.created_at.strftime('%a, %d %b %Y %H:%M:%S')%>
-  <%end%>
+    <% @messages.each do |message|%>
+      <%=message.message%>  <%=message.created_at.strftime('%a, %d %b %Y %H:%M:%S')%>
+    <%end%>
   </textarea>
-  <form action="<%= message_post_path%>" method="POST">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
-  <input type="hidden" name="product_id" value="<%= @messages[0].product_id%>">
+  <form id="myForm" action="<%= message_post_path%>" method="POST" onsubmit="submitForm()">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+    <input type="hidden" name="product_id" value="<%= @messages[0].product_id%>">
     <div class="form-group">
       <label class="mt-5">send a message</label>
-      <textarea id="txt_1" name="message" rows="3" class="col"></textarea>
-      <button type="submit" class="btn btn-primary mt-2" onclick='submitForm("txt_1")'>Send</button> 
+      <textarea id="txt_1" name="message" rows="3" class="col" onkeyup='saveValue(this)'></textarea>
+      <button type="submit" class="btn btn-primary mt-2" >Send</button> 
     </div>  
-  </form>
-  
+  </form>  
 </div>  
 
+
+<!--Some JS to support instant messages -->
 <script type="text/javascript">
+// Some JS to refresh page every 10secs in order to fetch any new messages
   setTimeout(function(){
     window.location.reload(1);
-  }, 10000);
+  }, 3000);
 
-  function submitForm(textarea) {
-    m = document.getElementById(textarea)
-    m.innerHTML === ""
+// Some JS to clear field value after posting 
+  function submitForm() {
+    localStorage.setItem('txt_1','');    
   }
-        document.getElementById("txt_1").value = getSavedValue("txt_1");    // set the value to this input        
-        /* Here you can add more inputs to set value. if it's saved */
+  
+  // When reload page, get value from localStorage and set to the field 
+  document.getElementById('txt_1').value = getSavedValue('txt_1'); 
 
-        //Save the value function - save it to localStorage as (ID, VALUE)
-        function saveValue(e){
-            var id = e.id;  // get the sender's id to save it . 
-            var val = e.value; // get the value. 
-            localStorage.setItem(id, val);// Every time user writing something, the localStorage's value will override . 
-        }
+  //Save the value function - save it to localStorage as (ID, VALUE)
+  function saveValue(e){
+    var id = e.id;  // get the sender's id to save it . 
+    var val = e.value; // get the value. 
+    localStorage.setItem(id, val);// Every time user writing something, the localStorage's value will override . 
+  }
 
-        //get the saved value function - return the value of "v" from localStorage. 
-        function getSavedValue  (v){
-            if (!localStorage.getItem(v)) {
-                return "";// You can change this to your defualt value. 
-            }
-            return localStorage.getItem(v);
-        }
+  //get the saved value function - return the value of "v" from localStorage. 
+  function getSavedValue  (v){
+      if (!localStorage.getItem(v)) {
+          return "";// You can change this to your defualt value. 
+      }
+      return localStorage.getItem(v);
+  }
 </script>

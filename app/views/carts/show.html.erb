@@ -2,7 +2,7 @@
   <h3 class="display-5">My Cart!</h3>
   <p class="lead"></p>
   <hr class="my-3">
-  <%= link_to 'Continue Shopping', root_path, class:"btn btn-info btn-lg" %>
+  <%= link_to 'Continue Shopping', listing_path, class:"btn btn-info btn-MD" %>
 </div> 
 <div class="container">
   <% @cart_items.each do |item| %>
@@ -11,17 +11,14 @@
         <h6 class="row mx-auto">Title</h6>
         <p class="row text-truncate"><%= item.product.title %></p>
       </div>
-
       <div class="col-3">
         <h6 class="row mx-auto">Condition</h6>
         <p class="row mx-auto"><%= item.product.condition.name %></p>
       </div>
-
       <div class="col-3 mx-auto">
         <h6 class="row mx-auto">Quantity</h6>
         <p class="row mx-auto"><%= item.quantity %></p>
       </div>
-
       <div class="col-3 mx-auto">
         <h6 class="row mx-auto">Price</h6>
         <p class="row mx-auto"><%= number_with_precision(item.price, precision: 2) %></p>
@@ -34,24 +31,24 @@
         <%end%>      
       </div>  
     </div>    
-  <% end %>
+  <%end%>
 </div>
-
-
-
-
 <div class="jumbotron mt-5">
-  <hr class="my-4">
+  <hr class="my-3">
     <div class="d-flex justify-content-between">
       <h3 class="display-5">Total Amount</h3> 
       <h3 class="display-5">  $AUD <%= number_with_precision(@cart.total_amount, precision: 2) %></h3>
     </div>
   <p class="lead"></p>  
+  <% if !@cart.payment.receipt_url%>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <a href="<%= has_info? ? shipping_info_path : new_shipping_info_path %>">
+      <button class="btn btn-primary btn-lg btn-block mb-2 <%= user_signed_in? ? nil : "disabled" %>">Checkout!
+      </button>
+    </a>
+  <% end %>
 </div>
-<% if !@cart.payment.receipt_url%>
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <a href="<%= has_info? ? shipping_info_path : new_shipping_info_path %>"><button class="btn btn-primary btn-lg btn-block my-3 <%= user_signed_in? ? nil : "disabled" %>">Checkout!</button></a>
-<% end %>
+
 
 
 

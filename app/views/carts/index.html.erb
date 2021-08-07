@@ -1,14 +1,13 @@
 <div class="jumbotron">
   <h3 class="display-5">All Carts!</h3>
-  <p class="lead"></p>
   <hr class="my-3">
-  <%= link_to 'Continue Shopping', root_path, class:"btn btn-info btn-lg" %>
+  <%= link_to 'Continue Shopping', listing_path, class:"btn btn-info btn-md" %>
 </div>
-<div class="col-12 bg-light p-3">
+<div class="col-12 bg-light mb-5 p-3">
   <div class="row">    
-      <strong class="col-4">Date</strong>
-      <strong class="col-4">Status</strong>
-      <strong class="col-4">Total $</strong>      
+    <strong class="col-4">Date</strong>
+    <strong class="col-4">Status</strong>
+    <strong class="col-4">Total $</strong>      
   </div>  
   <% @carts.each do |cart| %>
     <div class="row">
@@ -28,5 +27,4 @@
     </div>      
   <% end %>  
 </div>
-<br>
 

@@ -8,7 +8,10 @@ class Payment < ApplicationRecord
 
   # remove any whitespace before saving a payment
   def remove_whitespace
+    if payment_intent_id
     self.payment_intent_id = self.payment_intent_id.strip
+    elsif receipt_url
     self.receipt_url = self.receipt_url.strip
+    end
   end
 end

@@ -18,7 +18,7 @@ class Product < ApplicationRecord
   validates :delivery_estimated, presence: true
   validates :quantity_available, presence: true
 
-  #Class Method search, sorting and filtering with eagle loading
+  #Class Method search, sorting and filtering with eagle loading - Page controller - for listing.html
   def self.search( search, category, filter)
     key = ""
     value = :asc
@@ -34,6 +34,7 @@ class Product < ApplicationRecord
       value = :desc
     end  
 
+    # Return Query acording to conditions received as args. 
     if search && search != "" && category == ""
       return self.where("LOWER(#{:title}) LIKE ?","%#{search.downcase}%").order(key => value)
     elsif search && search != "" && category && category != "" 

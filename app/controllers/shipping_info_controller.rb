@@ -1,29 +1,44 @@
 class ShippingInfoController < ApplicationController
   before_action :authenticate_user!  
-  before_action :my_cart
-  before_action :verify_authenticity_token, only: [:show, :update]
+  before_action :my_cart, only: [:show]
+  before_action :verify_authenticity_token, only: [:show, :update]  
 
-  def my_cart
-    status = Status.first
-    cart = Cart.find_by(user_id:current_user.id, status:status)
-    return cart.id
+  # Send resources to HTML - new_shipping_info GET    /shipping_info/new
+  def new
+    @shipping_info = ShippingInfo.new    
   end
 
-  def show
+  # Send @shipping_info to HTML - edit_shipping_info GET    /shipping_info/:id/edit
+  def edit
     @shipping_info = ShippingInfo.find_by(user_id:current_user.id)
-    @cart = my_cart
+  end  
+
+  # Receive params from HTML and update - PUT /shipping_info/:id
+  def update
+    update = ShippingInfo.find_by(user_id:current_user.id)
+    update.update(shipping_info_params)
+    redirect_to shipping_info_path
+  end
+
+  # Send @shipping_info to HTML, create Stripe Sessison - shipping_info GET    /shipping_info/:id
+  def show
+    # Sending @shipping_info to HTML
+    @shipping_info = ShippingInfo.find_by(user_id:current_user.id)
+
+    #Gathering data to Create Stripe Session    
     cart_id = my_cart
     @cart_items = CartItem.where(cart_id:cart_id)
     @cart = Cart.find(cart_id)
     names = @cart_items.map do |a|
     a.product.title
     end 
-    names = names.uniq().split(",").join(",")
-    
+    names = names.uniq().split(",").join(",")    
     descriptions = @cart_items.map do |a|
     a.product.description
     end 
     descriptions = descriptions.uniq().split(",").join(",")
+
+    # Creating stripe session
     if user_signed_in?
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
@@ -48,21 +63,8 @@ class ShippingInfoController < ApplicationController
     @session_id = session.id
     end
   end
-
-  def new
-    @shipping_info = ShippingInfo.new    
-  end
-
-  def edit
-    @shipping_info = ShippingInfo.find_by(user_id:current_user.id)
-  end  
-
-  def update
-    update = ShippingInfo.find_by(user_id:current_user.id)
-    update.update(shipping_info_params)
-    redirect_to shipping_info_path
-  end
-
+ 
+  # Receive params from HTML and create Shipping info - POST   /shipping_info
   def create
     user = User.find(current_user.id)
     info = ShippingInfo.new(user:user)
@@ -72,7 +74,16 @@ class ShippingInfoController < ApplicationController
   end
 
   private
+
+  # Only allow permited paramms 
   def shipping_info_params
     params.require(:shipping_info).permit(:unit,:street_number,:street_name,:suburb,:postcode,:phone) 
+  end
+
+  #Helper Get cart with "Open" status, before action
+  def my_cart
+    status = Status.first
+    cart = Cart.find_by(user_id:current_user.id, status:status)
+    return cart.id
   end
 end

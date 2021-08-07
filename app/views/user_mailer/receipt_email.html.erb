@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-  <h1>Hello, <%= @user.email %> !</h1>
+  <h1>Hello, <%= @user.username %> !</h1>
 
   <br>
   <br>
@@ -17,7 +17,7 @@
       your username is: .<br>
     </p>
     <a href="<%= @receipt%>">Click here to see your receipt!</a>
-     <p>This is your cart number <%= @cart.id %></p>
+     <p>This is your cart number <strong><%= @cart.id %></strong></p>
     <p>
       Follow this link: <%= @url %>, to see whats new!
     </p>

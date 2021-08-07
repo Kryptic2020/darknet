@@ -21,6 +21,7 @@ class User::RegistrationsController < Devise::RegistrationsController
         sign_up(resource_name, resource)
         redirect_to session.delete(:return_to) || root_path
         session[:return_to] = nil
+        UserMailer.welcome_email(current_user).deliver
       else
         set_flash_message! :notice, :"signed_up_but_#{resource.inactive_message}"
         expire_data_after_sign_in!

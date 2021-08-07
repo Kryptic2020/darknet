@@ -1,63 +1,58 @@
 <div class="container" style="max-width: 36rem;">
-<form action="/cart_item/update/<%= @cart_item.id%>" method="POST">
-  <div class="jumbotron">
-  <h3 class="display-5">Edit Cart Item!</h3>
-  <p class="lead"></p>
-  <hr class="my-4">
-</div>
-  <div class="card m-auto">
-    <%= image_tag @product.picture, class:"card-img-top"%>
-    <div class="card-body">
-      <h5 class="card-title">
-        <%= @product.title%>
-      </h5>
-      <p class="card-text">
-        <%= @product.description%>
-      </p>
-      <p class="card-text t-blue">Price AUD$ 
-        <%= number_with_precision(@product.price, precision: 2)%>
-      </p>
-      <p class="card-text">Condition: 
-        <%= @product.condition.name%>
-      </p>
-      <p class="card-text">Shipped From 
-        <%= @product.shipped_from%> - Free Shipping
-      </p>
-      <p class="card-text">Delivery estimated 
-        <%= @product.delivery_estimated%> days
-      </p>
-
-      
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
-
-        <p>Quantity 
-          <select name="quantity" class="custom-select w-50 my-1 mx-sm-2" id="select">
-            <option value="1" selected><%= @cart_item.quantity%></option>
-            <% 29.times do |i |%>
-              <option value="<%= i + 1%>">
-                <%= i + 1%>
-              </option>
-            <%end%>
-          </select>
-        </p>
-        <p class="card-text t-red">Sold 
-          <%= @product.sold%>
-        </p>
-        <p class="card-text t-greem">Available 
-          <%= @product.quantity_available%>
-        </p>
-        <input type="hidden" name="product_id" value="<%= @product.id %>">
-        <p class="card-text">
-          <small class="text-muted">Last updated 
-            <%= @product.created_at%>
-          </small>
-        </p>
+  <form action="/cart_item/update/<%= @cart_item.id%>" method="POST">
+    <input type="hidden" name="_method" value="put">
+      <div class="jumbotron">
+        <h3 class="display-5">Edit Cart Item!</h3>
+        <hr class="my-3">
+        <%= link_to "Back" , cart_path(@cart_item.cart_id), class:"btn btn-info btn-lg" %>
       </div>
-    </div>
-    
-    <button type="submit" class="btn btn-primary btn-lg btn-block my-3">Update!
+      <div class="card m-auto">
+        <%= image_tag @product.picture, class:"card-img-top"%>
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= @product.title%>
+          </h5>
+          <p class="card-text">
+            <%= @product.description%>
+          </p>
+          <p class="card-text t-blue">Price AUD$ 
+            <%= number_with_precision(@product.price, precision: 2)%>
+          </p>
+          <p class="card-text">Condition: 
+            <%= @product.condition.name%>
+          </p>
+          <p class="card-text">Shipped From 
+            <%= @product.shipped_from%> - Free Shipping
+          </p>
+          <p class="card-text">Delivery estimated 
+            <%= @product.delivery_estimated%> days
+          </p>          
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
+          <p>Quantity 
+            <select name="quantity" class="custom-select w-50 my-1 mx-sm-2" id="select">
+              <option value="1" selected><%= @cart_item.quantity%></option>
+              <% 29.times do |i |%>
+                <option value="<%= i + 1%>">
+                  <%= i + 1%>
+                </option>
+              <%end%>
+            </select>
+          </p>
+          <p class="card-text t-red">Sold 
+            <%= @product.sold%>
+          </p>
+          <p class="card-text t-greem">Available 
+            <%= @product.quantity_available%>
+          </p>
+          <input type="hidden" name="product_id" value="<%= @product.id %>">
+          <p class="card-text">
+            <small class="text-muted">Last updated 
+              <%= @product.created_at%>
+            </small>
+          </p>
+        </div>
+      </div>    
+    <button type="submit" class="btn btn-primary btn-lg btn-block mt-3 mb-5">Update!
     </button>
-  
-
-  <%= link_to "Back" , cart_path(@cart_item.cart_id), class:"btn btn-info btn-lg btn-block my-3" %>
+  </form>  
 </div>

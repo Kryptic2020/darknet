@@ -1,42 +1,48 @@
 
 <div class="container" style="max-width: 36rem;">
-<form action="/carts" method="POST">
-  <div class="jumbotron">
-  <h3 class="display-5">Hot Deal!</h3>
-  <p class="lead"></p>
-  <hr class="my-4">
-   <%= link_to message_path(@product.id) do %>
-    <button class=" mt-3 white border-light mx-2 rounded">
-      <i class="material-icons float-left align-middle ">question_answer</i>
-      <small>Ask Seller</small>              
-    </button>
-  <%end%> 
-</div>
-  <div class="card m-auto bg-light">
-    <%= image_tag @product.picture, class:"card-img-top"%>
-    <div class="card-body">
-      <h5 class="card-title">
-        <%= @product.title%>
-      </h5>
-      <p class="card-text">
-        <%= @product.description%>
-      </p>
-      <p class="card-text t-blue">Price AUD$ 
-        <%= number_with_precision(@product.price, precision: 2)%>
-      </p>
-      <p class="card-text">Condition: 
-        <%= @product.condition.name%>
-      </p>
-      <p class="card-text">Shipped From 
-        <%= @product.shipped_from%> - Free Shipping
-      </p>
-      <p class="card-text">Delivery estimated 
-        <%= @product.delivery_estimated%> days
-      </p>
-
-      
+  <form action="/carts" method="POST">
+    <div class="jumbotron">
+      <h3 class="display-5">Hot Deal!</h3>
+      <hr class="my-3">
+      <div class="d-flex justify-content-between">
+        <%= link_to message_path(@product.id) do %>
+          <button class=" bg-info border-info p-1 mx-2 rounded">
+            <i class="material-icons float-left align-middle ">question_answer</i>
+            <small>Ask Seller</small>              
+          </button>
+        <%end%> 
+        <%= link_to "Back" , listing_path, class:"bg-info border-info px-3 py-1 mx-2 rounded t-black "%>
+      </div>
+    </div>
+    <div class="card m-auto bg-light mb-5">
+      <%= image_tag @product.picture, class:"card-img-top"%>
+      <div class="card-body">
+        <div class="d-flex justify-content-between mb-2">      
+          <h5 class="card-title my-auto text-truncate">
+            <%= @product.title%>            
+          </h5>
+          <%= form_with url: add_favorite_path(@product.id), local: true, method: :post do %>    
+              <button onclick='myFunction("<%= @product.id%>")' class=" btn btn-outline-danger border-danger px-3 mx-2 rounded ">
+                <i class="material-icons float-left t-pink align-middle">favorite</i>Save              
+              </button>       
+            <%end%>
+        </div>  
+        <p class="card-text text-truncate">
+          <%= @product.description%>
+        </p>
+        <p class="card-text t-blue">Price AUD$ 
+          <%= number_with_precision(@product.price, precision: 2)%>
+        </p>
+        <p class="card-text">Condition: 
+          <%= @product.condition.name%>
+        </p>
+        <p class="card-text">Shipped From 
+          <%= @product.shipped_from%> - Free Shipping
+        </p>
+        <p class="card-text">Delivery estimated 
+          <%= @product.delivery_estimated%> days
+        </p>      
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
-
         <p>Quantity 
           <select name="quantity" class="custom-select w-50 my-1 mx-sm-2" id="select">
             <option value="1" selected>1</option>
@@ -60,26 +66,13 @@
           </small>
         </p>
       </div>
-    </div>
-    <button type="submit" name="path_mycart" value="true" class="btn btn-primary btn-lg btn-block my-3">Buy It Now!
-    </button>
-    <button type="submit" name="path_home" value="true" class="btn btn-info btn-lg btn-block my-3">Add To Cart!
-    </button>
-
-
-  <%= form_with url: add_favorite_path(@product.id), local: true, method: :post do %> 
-
-
-  
-
-  
- <button onclick='myFunction("<%= @product.id%>")' class="btn btn-danger btn-lg btn-block my-3 ">
-                <i class="material-icons pr-4 align-middle">favorite</i>
-                Save              
-              </button>       
-
-<%end%> 
-
-  <%= link_to "Back" , root_path, class:"btn btn-light btn-lg btn-block my-3" %>
+      <div class="d-flex justify-content-around">
+        <button type="submit" name="path_mycart" value="true" class="btn btn-primary my-3">
+          Buy It Now!
+        </button>
+        <button type="submit" name="path_home" value="true" class="btn btn-info my-3">Add To Cart!
+        </button>        
+      </div>         
+    </div> 
   </form>
 </div>

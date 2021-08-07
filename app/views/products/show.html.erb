@@ -1,63 +1,48 @@
-<p id="notice"><%= notice %></p>
-
-
-<div class="jumbotron">
+<div class="jumbotron mx-auto col-lg-8">
   <h3 class="display-5">Product Details!</h3>
-  <p class="lead"></p>
-  <hr class="my-4">
+  <hr class="my-3">
+  <%= link_to 'Back', products_path, class:"btn btn-info" %>
 </div>
-<div class="bg-light col col-sm-6 p-3 mb-4">
-<p>
-  <strong>Title:</strong>
-  <%= @product.title %>
-</p>
+<div class="bg-light mx-auto col col-lg-8 p-3 mb-5">
+  <p>
+    <strong>Title:</strong>
+    <%= @product.title %>
+  </p>
+  <p>
+    <strong>Description:</strong>
+    <%= @product.description %>
+  </p>
+  <p>
+    <strong>Price:</strong>
+    <%= @product.price %>
+  </p>
+  <p>
+    <strong>Condition:</strong>
+    <%= @product.condition.name %>
+  </p>
+  <p>
+    <strong>Shipped from:</strong>
+    <%= @product.shipped_from %>
+  </p>
+  <p>
+    <strong>Delivery est:</strong>
+    <%= @product.delivery_estimated %>
+  </p>
+  <p>
+    <strong>Available:</strong>
+    <%= @product.quantity_available %>
+  </p>
+  <p>
+    <strong>Sold:</strong>
+    <%= @product.sold %>
+  </p>
+  <p>
+    <strong>Category:</strong>
+    <%= @product.category.name %>
+  </p>
+  <p>  
+    <%= image_tag @product.picture, class:"b-radius w-100" %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @product.price %>
-</p>
-
-<p>
-  <strong>Condition:</strong>
-  <%= @product.condition.name %>
-</p>
-
-<p>
-  <strong>Shipped from:</strong>
-  <%= @product.shipped_from %>
-</p>
-
-<p>
-  <strong>Delivery est:</strong>
-  <%= @product.delivery_estimated %>
-</p>
-
-<p>
-  <strong>Available:</strong>
-  <%= @product.quantity_available %>
-</p>
-
-<p>
-  <strong>Sold:</strong>
-  <%= @product.sold %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @product.category.name %>
-</p>
-
-<p>
- 
-  <%= image_tag @product.picture, class:"b-radius w-100" %>
-</p>
-</div>
-
-   
-  <%= link_to 'Edit', edit_product_path(@product), class:"btn btn-warning mb-5 "%> 
-  <%= link_to 'Back', products_path, class:"btn btn-secondary mx-3 mb-5" %>
+<%= link_to 'Edit', edit_product_path(@product), class:"btn btn-warning btn-lg my-3 "%> 
+ </div>   

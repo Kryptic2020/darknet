@@ -1,7 +1,6 @@
 <div class="jumbotron mt-5">
   <h3 class="display-5">Welcome to Dark Net!</h3>
-  <p class="lead"></p>
-  <hr class="my-4">
+  <hr class="my-3">
 </div>
 <div class="container">
   <form action="<%= listing_path%>" method="get" class="form-inline row">
@@ -18,7 +17,7 @@
           </label>
         </div>    
         <div class="form-check col">
-          <input class="form-check-input" type="radio" name="filter" id="filter2" value="price-asc">
+          <input class="form-check-input" type="radio" name="filter" id="filter2" value="price-desc">
           <label class="form-check-label d-flex" for="radios2">
             <i class="material-icons pr-2">arrow_upward</i><span>By "Price"</span>
           </label>
@@ -33,7 +32,7 @@
           </label>
         </div>    
         <div class="form-check col">
-          <input class="form-check-input" type="radio" name="filter" id="filter4" value="price-desc">
+          <input class="form-check-input" type="radio" name="filter" id="filter4" value="price-asc">
           <label class="form-check-label d-flex" for="radios2">
             <i class="material-icons pr-2">arrow_downward</i><span>By "Price"</span>
           </label>
@@ -79,20 +78,16 @@
               </div>
             </div>
           <% end %> 
-          <div class="" style="height: 6rem;">
+          <div class="col" style="height: 6rem;">
             <%= form_with url: add_favorite_path(product.id), local: true, method: :post do %> 
-              <div id="<%= product.id%>" class="h-50 alert alert-success alert-dismissable m-0" style="display: none">
-                <button type="button" class="close h-50" data-dismiss="alert" aria-hidden="true">&times;</button>
-                  Saved!
-              </div> 
-              <button onclick='addFavorites("<%= product.id%>")' class=" white border-light mx-2 rounded p-1">
+              <button onclick='addFavorites("<%= product.id%>")' class=" white border-light rounded p-1 col mx-auto mb-2">
                 <i class="material-icons t-pink float-left text-left  align-middle">favorite</i>
-                <small class="t-pink">Add Favorite</small>              
+                <small id="<%= product.id%>" class="t-pink">Add Favorite</small>              
               </button>  
                                   
             <%end%> 
             <%= link_to message_path(product.id) do %>
-              <button class=" mt-3 white border-info bg-info p-1 mx-2 rounded">
+              <button class="white border-info bg-info p-1 col rounded">
                 <i class="material-icons float-left align-middle ">question_answer</i>
                 <small>Ask Seller</small>              
               </button>
@@ -108,9 +103,12 @@
 </div>
 
 <script>
+
+  // show alert saved
   function addFavorites(id) {
-    document.getElementById(id).style.display = 'block';  
+    document.getElementById(id).innerHTML = 'Saved'; 
  } 
+ // Toggle show/hide filters and Eye icon on/off 
  function toggle(id,id2) {
   var x = document.getElementById(id);
   if (x.style.display === "none") {

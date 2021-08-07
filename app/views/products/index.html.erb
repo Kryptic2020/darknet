@@ -1,47 +1,37 @@
-<p id="notice"><%= notice %></p>
-
 <div class="jumbotron">
   <h3 class="display-5">Product list!</h3>
-  <p class="lead"></p>
-  <hr class="my-4">
+  <hr class="my-3">
   <%= link_to dashboard_path() do %>
-  <button class=" col-7 col-sm-6 col-md-4 col-lg-3 mt-3 bg-info border-info mx-1 rounded">
-    <i class="material-icons float-left align-middle ">dashboard</i>
-    <small> Go To Dashboard</small>              
-  </button>
+    <button class=" col-7 col-sm-6 col-md-4 col-lg-3 bg-info border-info mx-1 rounded">
+      <i class="material-icons float-left align-middle ">dashboard</i>
+      <small> Go To Dashboard</small>              
+    </button>
   <%end%> 
 </div>
-</div>
-
-<div class="container">
-<%= link_to 'New Product', new_product_path, class:"btn btn-info" %>
+<div class="container mb-5">
+  <%= link_to 'New Product', new_product_path, class:"btn btn-info" %>
   <% @products.each do |product| %>
     <div class="row mt-5 justify-content-between bg-light px-2 py-3">
       <div class="col-2">
         <h6 class="row">Title</h6>
         <p class="row text-truncate"><%= product.title %></p>
       </div>
-
       <div class="col-2 mx-auto">
         <h6 class="row">Price</h6>
         <p class="row"><%= number_with_precision(product.price, precision: 2) %></p>
       </div>
-
       <div class="col-2 mx-auto">
         <h6 class="row">Available</h6>
         <p class="row m-auto"><%= product.quantity_available %></p>
       </div>
-
       <div class="col-1 mx-auto">
         <h6 class="row">Sold</h6>
         <p class="row m-auto"><%= product.sold %></p>
       </div>
-
       <div class="col-2 mx-auto">
         <h6 class="row">Category</h6>
         <p class="row"><%= product.category.name %></p>
       </div>
-
       <div class="d-flex mx-auto mt-1 mb-3">      
         <%= link_to 'See', product, class:"btn btn-primary btn-sm mr-1" %>
         <%= link_to 'Edit', edit_product_path(product), class:"btn btn-warning btn-sm mr-1" %>
@@ -49,8 +39,4 @@
       </div>  
     </div>    
   <% end %>
-
-<br>
-
-
 </div>

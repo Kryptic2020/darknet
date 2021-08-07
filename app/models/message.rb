@@ -5,7 +5,7 @@ class Message < ApplicationRecord
   #Validations
   validates :message, length: {maximum: 100, too_long: "100 is the maximum number of caracter"}
 
-  #Class method with eagle loading
+  #Class method with eagle loading, fetching called from product controller / dasboard action
   def self.get_my_messages(id)
     self.where(muted:false).order(created_at: :asc).includes(:product).where("products.user_id = ?", id).references(:product)
   end
