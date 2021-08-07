@@ -1,7 +1,8 @@
 class CartItemController < ApplicationController
-  def index
-  user_id = current_user.id
+  before_action :authenticate_user!
   
+  def index
+  user_id = current_user.id  
   end
 
   def create
