@@ -4,7 +4,7 @@ class CreateMessages < ActiveRecord::Migration[6.1]
       t.references :user, null: false, foreign_key: true
       t.references :product, null: false, foreign_key: true
       t.text :message
-      t.boolean :muted, :boolean
+      t.boolean :muted
 
       t.timestamps
     end
