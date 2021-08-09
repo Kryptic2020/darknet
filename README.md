@@ -62,7 +62,7 @@
 
   - 
  ## Sitemap 
- ![SITEMAP](./app/assets/images/darknet-Sitemap.png)
+ ![SITEMAP](./app/assets/images/darknetSitemap_Final.png)
  
  ## Landing Page  
  ![LANDING](./app/assets/images/Landing!.png)  
@@ -141,17 +141,40 @@
 
 
 
-R13	Wireframes for your app  
+# R13	Wireframes for your app 
+
+### Landing Page  
+![1w](./app/assets/images/1w.png)   
+
+### Listings Page  
+![2w](./app/assets/images/2w.png)  
+
+### Product Page  
+![3w](./app/assets/images/3w.png)  
+
+### All Carts Page  
+![4w](./app/assets/images/4w.png)  
+
+### MyCart Page  
+![5w](./app/assets/images/5w.png)  
+
+### Dashboard Page  
+![6w](./app/assets/images/6w.png)  
 
 <a name="ERD"/></a>
 
 # R14	Darknet ERD's Design    
 ### Initial Version  
-* The initial ERD version during the initial development stages, bank details, address and location was considered for all users, but after taking user experience into consideration and time optimization, I decided to go for a more dry solution, replacing those tables with a shipping info table, so before each payment on the wesite the user will be required to provide, confirm or update shipping info. Comparing with the initial design, those changes is far benefitial for this project. The initial version can be found below:  
+* The initial ERD version during the initial development stages, bank details, address and location was considered for all users.
+* After taking user experience into consideration and time optimization, I decided to go for a more dry solution, replacing those tables with a shipping info table, so before each payment on the wesite the user will be required to provide, confirm or update shipping info. Comparing with the initial design, those changes is far benefitial for this project. 
+* The initial version can be found below:  
 ![ERD1](./app/assets/images/darknet-ERD_v1.png)   
 ### Final Version  
-* In the advanced stages of the development, I identified that the project could have 2 more features and those features could easily implemented and linked to some existing tables, and realised that approach would not risk or cause any harm to the actual code. Then two join tables were added to support Favorites and instant Messaging features. The final result of those implementations can be found below, at the final ERD version:  
-![ERD](./app/assets/images/darknet-ERD.png) 
+* In the advanced stages of the development, I identified that the project could have 2 more features and those features could easily implemented and linked to some existing tables, and realised that approach would not risk or cause any harm to the actual code.   
+Then two join tables were added to support Favorites and instant Messaging features.   
+* To support the implementation of AWS S3 cloud storage, Active_storage_blobs and Active_storage_Attachments were also included.
+* The final result of those implementations can be found below, at the final ERD version:  
+![ERD](./app/assets/images/darknet-ERD_Final.png) 
 
 
 
@@ -222,23 +245,21 @@ The Action View manage all html, email and text templates. It is a framework to 
 
 
 # R16	Darknet third party services  
-[Devise](https://github.com/heartcombo/devise): We are using devise to manage authentications in our app. Devise is the best, fexible and well documented solution for authenticating users, that gem creates sign-up and sign-in forms with user authentication and much more. 
+[Heroku](https://id.heroku.com): Darknet is deployed to Heroku. All production environment keys are held on heroku website setting tools, Heroku also manage postgresql for production. Heroku is very easy to deploy to, all files gets easily compilied and deplyed with just a few lines of code thanks to github integration with Heroku. Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud, its a first-class integration, fast, flexible, and efficient CI/CD.
 
-[Heroku](https://id.heroku.com): Darknet is deployed to Heroku. Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud, its a first-class integration, fast, flexible, and efficient CI/CD.
+[Sendgrid](https://sendgrid.com/): We are integrated with SendGrid API for email services. The set up consist in creating API key so that stabilish a secure conection with Sendgrid. With a easy setup we integrate Sendgrid with Rails mailer module that allow us to working completelly inside the mailer. Sendgrid is a leader in trusted email delivery, cloud-based solution that sends transactional and marketing email. A secure API for email service. 
 
-[Sendgrid](https://sendgrid.com/): We are integrated with SendGrid API for email services, Sendgrid is a leader in trusted email delivery, cloud-based solution that sends transactional and marketing email. A secure API for email service. 
+[AWS S3](https://aws.amazon.com/aws/s3) - We are integrated with Amazon S3 API for cloud storage. The set up consist in get a bucket with some configuration on Amazon website and getting a few keys and data to be used on our code setup with Active store, Amazon is the best cloud storage solution for storing our products uploaded photos.
 
-[AWS S3](https://aws.amazon.com/aws/s3) - We are integrated with Amazon S3 API for cloud storage. Amazon is the best cloud storage solution for storing our products uploaded photos.
+[Stripe](https://stripe.com/au): We are integrated with Stripe payment API. The set up consist in creating API key so that stabilish a secure conection with stripe, with the key o hand we create a session for payment, receiving a call back with some important data such as the payment intent id, in which is used to create another session with webhook to retrieve payment data for the processed payment. That retrieved payment data contains valuable info such as payment status and receipt. Stripe is an online payment getway infrastructure, secure and very well documented allow a smooth and safe implementation. Millions of businesses of all sizes use Stripe's software and APIs to accept payments, send payouts, and manage their businesses online.
 
-[Stripe](https://stripe.com/au): We are integrated with Stripe payment API. Stripe is an online payment getway infrastructure, secure and very well documented allow a smooth and safe implementation. Millions of businesses of all sizes use Stripe's software and APIs to accept payments, send payouts, and manage their businesses online.
-
-[Bootstrap](https://getbootstrap.com/): Darknet has quite a lot Bootstrap components such as navbars, buttons, forms. Bootstrap combine HTML, CSS and JavaScript library to implement stylings, it has a huge options for components and is very easy to use its classes for responsive layouts and custom components. 
-
-Some gems included into this project are:
+### Some gems included into this project are:
 [FIGARO](https://github.com/laserlemon/figaro): Figaro parses a Git-ignored YAML file in your application and loads its values into ENV.Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file.  
 [SIMPLEFORMS](https://github.com/heartcombo/simple_form): Simple Form aims to be as flexible as possible while helping with powerful components to create forms.  
 [MATERIALICONS](https://github.com/Angelmmiguel/material_icons): All Darknet icons are from Google Fonts/ Material Design Icons, it has +900 set of icons based on Material Design guidelines.  
 [ULTRAHOOK](https://www.ultrahook.com/): UltraHook makes it super easy to connect public webhook endpoints with development environments, Ultrahook has been in use to support the stripe callbacks while Darknet is in development environment.  
+[Devise](https://github.com/heartcombo/devise): We are using devise to manage authentications in our app. Devise is the best, fexible and well documented solution for authenticating users, that gem creates sign-up and sign-in forms with user authentication and much more. 
+[Bootstrap](https://getbootstrap.com/): Darknet has quite a lot Bootstrap components such as navbars, buttons, forms. Bootstrap combine HTML, CSS and JavaScript library to implement stylings, it has a huge options for components and is very easy to use its classes for responsive layouts and custom components. 
 
 # R17	Model Relationships/Associations   
 
@@ -263,8 +284,8 @@ This relationship shows a category can have many products and a product belongs 
 ## **Conditon : Product**    
 This relationship shows a condition can have many products and a product belongs to a condition. The relationship is created by referencing the condition_id in the Product model to represent a one-to-many association. 
 
-## **Picture : Product**    
-This relationship shows a picture can have many products and a product belongs to a picture. The relationship is created by referencing the picture_id in the Product model to represent a one-to-many association. 
+## **ActiveStorageBlobs : Product**    
+This relationship shows a ActiveStorageBlobs can have many products and a product belongs to a ActiveStorageBlobs. The relationship is created by referencing the ActiveStorageBlobs_id in the Product model to represent a one-to-many association. 
 
 ## **Product : Cart : Cart_Items**    
 This relationship shows a product can have many carts through cart_items join table and a cart can have many products through cart_items join table. The cart_items join table belongs to product table and also belongs to cart table. The relationship is created by referencing the product_id and cart_id in the Cart_Items model to represent a many-to-many association. 
@@ -295,8 +316,8 @@ This relationship shows a product can have many users through message join table
  - Picture  
 
  Product, Category, Condition and Picture were all one single table with a bunch of attributes before been submitted to the first and second normalization steps.   
- Below is the result of normalization and its attributes required to support the app Listings and its features:  
-  ![ProductN](./app/assets/images/ProductN.png)  
+ Below is the result getting AWS S3 cloud storage implemented and also result of normalization and its attributes required to support the app Listings and its features:  
+  ![ProductN](./app/assets/images/ProductN!.png)  
 
   To support Favorite list of products, a join table called Favorite has been created to link users to its favorite products, for that case only foreign key and primary key are holded on this table.   
   A similar approach was adopted to support and display Messages between the user(buyer) and the user of a product(seller), where a join table called message was created, for that case two attributes were added to this join table: "message" and "muted" to support the feature funtionalities, as below:   
@@ -317,12 +338,31 @@ This relationship shows a product can have many users through message join table
 # R19	Database schema design  
 ''' ruby
 
+  Table "active_storage_attachments"{
+    pk "id"
+    string "name"
+    string "record_type"
+    fk "record_id"
+    fk "blob_id"
+  }  
+
+  Table "active_storage_blobs"{
+    pk "id"
+    string "key"
+    string "filename"
+    string "content_type"
+    text "metadata"
+    string "service_name"
+    fk "byte_size"
+    string "checksum"
+  }  
+
   Table "picture"{  
     pk "id"  
     string "name"  
     string "url"  
     fk "product_id"  
-  }
+  }  
 
   Table "cart_items"{  
     pk "id"  

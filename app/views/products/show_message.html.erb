@@ -9,7 +9,7 @@
       <%=message.message%>  <%=message.created_at.strftime('%a, %d %b %Y %H:%M:%S')%>
     <%end%>
   </textarea>
-  <form id="myForm" action="<%= message_post_path%>" method="POST" onsubmit="submitForm()">
+  <form id="myForm" action="<%= send_message_post_path%>" method="POST" onsubmit="submitForm()">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token%>">
     <input type="hidden" name="product_id" value="<%= @messages[0].product_id%>">
     <input type="hidden" name="user_id" value="<%= @messages[0].user_id%>">
