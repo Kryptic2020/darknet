@@ -20,8 +20,30 @@
 <a name="links"/></a>
 
 # R7	Identification of the problem you are trying to solve by building this particular marketplace app.
+ With the recent online shopping boom due to the pandemic, I decided to do a research to see if I could capture any opportunity for business around it and somehow to contribute to our society globally.
+After researching the markets, the sector for brand new and second-hand products had my attention due to its high level of complains and after digging deeper I found out most of the complains come from bad buyer’s and seller’s experience.
+The most common complaints were:
+* Too many restrictions for sellers.
+* Complex process to get approved as a seller.
+* Complex process to get a product approved and posted.
+* Complex process to update or remove a selling product.
+* No high-quality product image.
+* High subscription fees
+* Expensive commission fees
+* No support on disputes
+* Too many adds, and intrusive marketing campaign
+* No easy channel to contact seller
+* No clear information about shipping location
+* No clear information about shipping timeframe
+* No safe payment method
+* No clear confirmation about payment
+* No favourite list
+* No descriptions
+* Monopoly!
 
-# R8	Why is it a problem that needs solving?
+
+# R8	Why is it a problem that needs solving?  
+Darknet was developed not to only try solving most of the above-mentioned issues and been an inclusive platform for bad experience Sellers and Buyers, but also to contribute to the global economy, as our platform will contribute to with individuals, entrepreneurs and business to sell more products, making more income, paying more taxes, resulting in more investment and development in areas such as health, education and technology for our global society. 
 
 # R9 Visit Darknet website at:  	
 ### https://darknet2.herokuapp.com/  
@@ -99,6 +121,10 @@
  ![Dashboard](./app/assets/images/Dashboard!.png)  
  ## Replying Page  
  ![Replying](./app/assets/images/Replying!.png)  
+ ## Email Welcome  
+ ![EmailRegister](./app/assets/images/EmailRegistered.png)  
+ ## Email Receipt  
+ ![EmailPurchase](./app/assets/images/EmailPurchase.png)  
 
  ### Target audience
   - For any individual, entrepreneurs, businesses and organizations to buy or sell brand new and second hand products literally in general, anything!  
@@ -454,21 +480,27 @@ This relationship shows a product can have many users through message join table
 
 # R20	Describe the way tasks are allocated and tracked in your project
 
-I had applied the Agile project management concepts to this marketplace project by using a Trello board.
+To achieve the best result possible for this project I had followed Agile approach combined with some management tools such as “Trello boards cards” and git versioning system.   
 
-At the commencement of this project, I spent an entire day to make a plan and make to do lists on my Trello board. 
+After spending a great deal of time planning what I would build, I took the first practical step of this project that was to create the initial tasks on Trello board cards, where I had a single card for each small task. Each of this card was set with:  
+* Title – A good and short title that identifies the task.
+*	Description – Description on what should be done, how it will be done and which tools it should be done.
+*	Checklist - Each task usually has included a list of things that can be listed and ticked upon completed until the whole task is accomplished.
+*	Attachment – Attach any resource, photo, documentation to support the task
+*	Comments – Commenting on a card was very helpful specially for those tasks I had some issues and try different solutions, so I could track and post what I have done and what did work and not work to solve the issue. 
+*	Deadline – most of my cards were set with 2/3 days, so the tasks was distributed in a way that could be achieved within this time frame. 
+*	Coloured Labels - to identify type of task, priority (even though we have dead-line feature set on the cards), to identify sections of the project, etc.  
+*	Action List – as each task is usually done individually, the cards are classified according to its action status such as “To do”, “Doing” and “Done”, initially all in the To do list and then moved one by one to Doing and after completed it is moved to done list. So, I know exactly what I have to do, what I am doing and what I have done. I also included some cards on a backlog list, kind of undecided tasks I might implement in the future.   
 
-Once I had established my MVP for the app, I started to write user stories, draw a sitemap and wireframes, and then set milestones to implement my desired features.
+Tasks such as ERD, Wireframe, user stories, Sitemap, Features, pages, styling, API’s, issues were tracked using Trello cards.  
+This technique gives me total control of tasks in a such way that I could push back to doing some completed tasks due to changes on the scope of the project, so moving cards helped a lot during unexpected upgrading and downgrading of the project.  
 
-I then started to code and once I completed implementing a feature, I drag the task card to the 'Done' list. 
+I also combined some of the cards with branching technique on git where a new branch was created for each new card feature and merged to the main file after accomplished the task, making it easy to revert back to a prior version if needed as easy as to move a card from “done” to “to do” or “doing” stage.  
+Below I illustrate all I have mentioned above:
 
-I had followed my estimated time frame to ensure MVP are implemented before the delivery date. I also reviewed my progress constantly to mark off tasks and reschedule my plans if needed. 
-
-Trello Board Link: 
-
-![T1](./app/assets/images/Trello!1.png)  
-![T2](./app/assets/images/Trello!2.png)  
-![T3](./app/assets/images/Trello!3.png)  
+![T1](./app/assets/images/TrelloStripe.png)  
+![T2](./app/assets/images/TrelloSearch.png)  
+![T3](./app/assets/images/TrelloFinished.png) 
 
 
 

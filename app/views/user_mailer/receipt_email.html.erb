@@ -7,19 +7,13 @@
   <h1>Hello, <%= @user.username %> !</h1>
 
   <br>
-  <br>
-  <br>
-    <h3>Welcome to darknet2.herokuapp.com ! </h3>
+    <h3>Thanks for shopping with darknet2.herokuapp.com ! </h3>
 <br>
-   <br> 
+ <p>The payment for your cart number <strong><%= @cart.id %></strong> has been succesfully processed</p>
     <p>
-      You have successfully signed up to darknet2.herokuapp.com,
-      your username is: .<br>
-    </p>
-    <a href="<%= @receipt%>">Click here to see your receipt!</a>
-     <p>This is your cart number <strong><%= @cart.id %></strong></p>
-    <p>
-      Follow this link: <%= @url %>, to see whats new!
+        <a href="<%= @receipt%>">View your receipt!</a>
+    
+      Follow this link: <a href="<%= @url %>">Darknet</a>, to see whats new!
     </p>
     <p>Thanks for joining and have a great day!</p>
   </body>
