@@ -116,12 +116,19 @@ Our platform will help individuals, entrepreneurs and business, to sell more pro
  ![Cart](./app/assets/images/Cart!.png)    
  ## Cart-Items Page  
  ![CartItem](./app/assets/images/CartItem!.png)    
+ ## Edit Cart-Items Page  
+ ![EditCartItem](./app/assets/images/EditCartItem!.png)
+ ![EditCartItem2](./app/assets/images/EditCartItem!!.png)    
  ## Ask Seller Page  
  ![MessageSeller](./app/assets/images/MessageSeller!.png)    
  ## Favorites Page  
- ![Favorites](./app/assets/images/Favorites!.png)    
+ ![Favorites](./app/assets/images/Favorites!.png)  
+ ## New Shipping Page  
+ ![NewShipping](./app/assets/images/NewShippingInfo!.png)      
  ## Shipping Page  
- ![Shipping](./app/assets/images/Shipping!.png)    
+ ![Shipping](./app/assets/images/Shipping!.png) 
+ ## Edit Shipping Page  
+ ![Edit Shipping](./app/assets/images/EditShipping!.png)       
  ## Payment Page  
  ![Stripe](./app/assets/images/Stripe.png)    
  ## Payment Confirmation Page  
@@ -129,10 +136,16 @@ Our platform will help individuals, entrepreneurs and business, to sell more pro
  ## Receipt Page  
  ![Receipt](./app/assets/images/Receipt!.png)    
  ## Selling List Page  
- ![SellingList](./app/assets/images/SellingList!.png)    
+ ![SellingList](./app/assets/images/SellingList!.png)   
+ ## New Selling Product Page  
+ ![NewSellingProduct](./app/assets/images/NewSellingProduct!.png)
+ ![NewSellingProduct2](./app/assets/images/NewSellingProduct!!.png)       
  ## Selling Product Page  
  ![SellingProduct](./app/assets/images/SellingProduct!.png)
- ![SellingProduct2](./app/assets/images/SellingProduct!!.png)    
+ ![SellingProduct2](./app/assets/images/SellingProduct!!.png)  
+ ## Edit Selling Product Page  
+ ![EditSellingProduct](./app/assets/images/EditSellingProduct!.png)
+ ![EditSellingProduct2](./app/assets/images/EditSellingProduct!!.png)      
  ## Dashboard Page  
  ![Dashboard](./app/assets/images/Dashboard!.png)    
  ## Replying Client Page  
@@ -333,7 +346,10 @@ This relationship shows a category can have many products and a product belongs 
 This relationship shows a condition can have many products and a product belongs to a condition. The relationship is created by referencing the condition_id in the Product model to represent a one-to-many association. 
 
 ## **ActiveStorageBlobs : Product**    
-This relationship shows a ActiveStorageBlobs can have many products and a product belongs to a ActiveStorageBlobs. The relationship is created by referencing the ActiveStorageBlobs_id in the Product model to represent a one-to-many association. 
+This relationship shows a ActiveStorageBlobs can have many products and a product belongs to a ActiveStorageBlobs. The relationship is created by referencing the ActiveStorageBlobs_id in the Product model to represent a one-to-many association.   
+
+## **ActiveStorageBlobs : ActiveStorageAttachments**    
+This relationship shows a ActiveStorageBlobs can have only one ActiveStorageAttachments and a ActiveStorageAttachments belongs to a ActiveStorageBlobs. The relationship is created by referencing the ActiveStorageBlobs_id in the ActiveStorageAttachments model to represent a one-to-one association. ActiveStorageAttachments has also a polymorphic associations as it can belong to any other table. We can see that ActiveStorageAttachments has "record_type" and "record_id" indicating a polyphormic association.  
 
 ## **Product : Cart : Cart_Items**    
 This relationship shows a product can have many carts through cart_items join table and a cart can have many products through cart_items join table. The cart_items join table belongs to product table and also belongs to cart table. The relationship is created by referencing the product_id and cart_id in the Cart_Items model to represent a many-to-many association. 
@@ -511,13 +527,13 @@ After spending a great deal of time planning what I would build, I took the firs
 Tasks such as ERD, Wireframe, user stories, Sitemap, Features, pages, styling, API’s, issues were tracked using Trello cards.  
 This technique gives me total control of tasks in a such way that I could push back to doing some completed tasks due to changes on the scope of the project, so moving cards helped a lot during unexpected upgrading and downgrading of the project.  
 
-I also combined some of the cards with branching technique on git where a new branch was created for each new card feature and merged to the main file after accomplished the task, making it easy to revert back to a prior version if needed as easy as to move a card from “done” to “to do” or “doing” stage.  
-Below I illustrate all I have mentioned above:
+I also combined some of the cards with branching technique on git where a new branch was created for each new card feature and merged to the main file after accomplished the task, making it easy to revert back to a prior version if needed as easy as to move a card from “done” to “to do” or “doing” stage. 
+### Darknet Trello board cards can be found here: https://trello.com/b/7DX2EpTe/marketplace   
+
+### Below I illustrate all I have mentioned above:
 
 ![T1](./app/assets/images/TrelloStripe.png)  
 ![T2](./app/assets/images/TrelloSearch.png)  
 ![T3](./app/assets/images/TrelloFinished.png) 
-
-
 
 
