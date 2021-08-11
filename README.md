@@ -315,10 +315,10 @@ The Action View manage all html, email and text templates. It is a framework to 
 [FIGARO](https://github.com/laserlemon/figaro): Figaro parses a Git-ignored YAML file in your application and loads its values into ENV.Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file.  
 [SIMPLEFORMS](https://github.com/heartcombo/simple_form): Simple Form aims to be as flexible as possible while helping with powerful components to create forms.  
 [MATERIALICONS](https://github.com/Angelmmiguel/material_icons): All Darknet icons are from Google Fonts/ Material Design Icons, it has +900 set of icons based on Material Design guidelines.  
-[ULTRAHOOK](https://www.ultrahook.com/): UltraHook makes it super easy to connect public webhook endpoints with development environments, Ultrahook has been in use to support the stripe callbacks while Darknet is in development environment.  
-[Devise](https://github.com/heartcombo/devise): We are using devise to manage authentications in our app. Devise is the best, fexible and well documented solution for authenticating users, that gem creates sign-up and sign-in forms with user authentication and much more. 
-[Bootstrap](https://getbootstrap.com/): Darknet has quite a lot Bootstrap components such as navbars, buttons, forms. Bootstrap combine HTML, CSS and JavaScript library to implement stylings, it has a huge options for components and is very easy to use its classes for responsive layouts and custom components. 
-[File_Validators](https://github.com/musaffa/file_validators):File Validators gem adds file size and content type validations to ActiveModel. Any module that uses ActiveModel, for example ActiveRecord, can use these file validators.    
+[ULTRAHOOK](https://www.ultrahook.com/): UltraHook makes it super easy to connect public webhook endpoints with development environments, Ultrahook has been in use to support the stripe callbacks while Darknet is in development environment.    
+[Devise](https://github.com/heartcombo/devise): We are using devise to manage authentications in our app. Devise is the best, fexible and well documented solution for authenticating users, that gem creates sign-up and sign-in forms with user authentication and much more.   
+[Bootstrap](https://getbootstrap.com/): Darknet has quite a lot Bootstrap components such as navbars, buttons, forms. Bootstrap combine HTML, CSS and JavaScript library to implement stylings, it has a huge options for components and is very easy to use its classes for responsive layouts and custom components.   
+[File_Validators](https://github.com/musaffa/file_validators):File Validators gem adds file size and content type validations to ActiveModel. Any module that uses ActiveModel, for example ActiveRecord, can use these file validators.      
 
 <a name="associations"/></a> 
 
