@@ -61,3 +61,4 @@ gem "stripe", "~> 5.37"
 
 gem "sendgrid-ruby", "~> 6.4"
 gem "figaro"
+gem 'file_validators'

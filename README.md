@@ -3,26 +3,39 @@
 
 ## Table of Contents: 
 
-[Links](#links)  
 [Setup Instructions & Logins](#setup)  
-[Problem](#problem)   
+[Problem](#problem)
+[Solution](#solution)
+[Links](#links)  
 [App Overview](#overview)  
-[User Stories](#userstories)  
-[Target Audience](#targetaudience)   
-[Tech Stack](#techstack)   
-[Planning & Project Management](#projectmgnt)   
-[Wireframes & Sitemap](#wireframes)  
-[schema](#schema)   
-[Entity Relationships](#relations)  
-[Third Party Services](#thirdparty)  
+[User Stories](#userstories) 
+[Wireframes](#wireframes)  
+[ERD](#erd)   
+[High Level Components](#abstractions)  
+[Third Party Services](#thirdparty)   
+[Gems](#gems)  
+[Models Associations](#associations)   
+[Entity Relations](#relations)   
+[Schema](#schema)  
+[Planning & Execution - Project Management](#trello)    
 
---- 
-<a name="links"/></a>
+<a name="setup"/></a>
+## Setup Instructions (Local)
 
-# R7	Identification of the problem you are trying to solve by building this particular marketplace app.
- With the recent online shopping boom due to the pandemic, I decided to do a research to see if I could capture any opportunity for business around it and somehow to contribute to our society globally.
-After researching the markets, the sector for brand new and second-hand products had my attention due to its high level of complains and after digging deeper I found out most of the complains come from bad buyer’s and seller’s experience.
-The most common complaints were:
+- Clone this repo
+- ``` bundle install ``` to install all required dependencies
+-  ``` rake db:setup ``` to create local database, migrate all migrations and seed database.
+- Enter credentials for Sendgrid & Stripe API's. 
+- ```rails server``` to run the rails server
+- Load http://localhost:3000/ in the browser    
+
+<a name="problem"/></a> 
+
+# Marketplaces Problems.
+With the recent online shopping boom due to the pandemic, I decided to do a research and see if I could capture any opportunity for business that somehow gives me the power to contribute to our global society.  
+After researching the markets, the sector for brand new and second-hand products had my attention due to its high level of complaints. After digging deeper into that I found out most of the complaints come from bad buyer’s and seller’s experience.
+The most common complaints were:  
+
 * Too many restrictions for sellers.
 * Complex process to get approved as a seller.
 * Complex process to get a product approved and posted.
@@ -41,21 +54,26 @@ The most common complaints were:
 * No descriptions
 * Monopoly!
 
+<a name="solution"/></a>
 
-# R8	Why is it a problem that needs solving?  
-Darknet was developed not to only try solving most of the above-mentioned issues and been an inclusive platform for bad experience Sellers and Buyers, but also to contribute to the global economy, as our platform will contribute to with individuals, entrepreneurs and business to sell more products, making more income, paying more taxes, resulting in more investment and development in areas such as health, education and technology for our global society. 
+# Marketplace Solution  
+Darknet was developed not to only try solving most of the above-mentioned issues and been an inclusive platform for bad experience Sellers and Buyers, but also to contribute to the global economy.  
+Our platform will help individuals, entrepreneurs and business, to sell more products, make more income, pay more taxes, resulting in more investment and development in areas such as health, education and technology for our global society.
 
-# R9 Visit Darknet website at:  	
+
+<a name="problem"/></a>
+
+# Visit Darknet website at:  	
 ### https://darknet2.herokuapp.com/  
 
 
-# R10	Visit GitHub repository (repo) at:  
+# Visit GitHub repository (repo) at:  
 ### https://github.com/Kryptic2020/darknet  
 
 
-<a name="links"/></a>  
+<a name="overview"/></a>  
 
-# R11	Darknet app description:    
+# Darknet App Overview:    
 
  ### Purpose
    Darknet aim to reach a global e-commerce scale, connecting millions of buyers and sellers from all markets. Darknet provides economic opportunity to every individuals with no exception, it includes entrepreneurs, businesses and organizations, does not matter how big or small size they are.
@@ -80,55 +98,52 @@ Darknet was developed not to only try solving most of the above-mentioned issues
  - See a dashboard with performance of your selling products, such as total revenue, total sold, total available.  
  - See an inbox of queries for your products from potential or current buyers, only unanswered client will be listed on your inbox.  
  - Message back your clients.   
-
-
-  - 
+  
  ## Sitemap 
  ![SITEMAP](./app/assets/images/darknetSitemap_Final.png)
  
  ## Landing Page  
- ![LANDING](./app/assets/images/Landing!.png)  
+ ![LANDING](./app/assets/images/Landing!.png)    
  ## Listing Page  
- ![Listings](./app/assets/images/Listings!.png)    
- ![Listings2](./app/assets/images/Listings!!.png)  
+ ![Listings](./app/assets/images/Listings!.png)      
+ ![Listings2](./app/assets/images/Listings!!.png)    
  ## Show Product Page  
- ![ShowProduct](./app/assets/images/ShowProduct!.png)  
+ ![ShowProduct](./app/assets/images/ShowProduct!.png)    
  ![ShowProduct2](./app/assets/images/ShowProduct!!.png)  
  ## Carts Page  
- ![Carts](./app/assets/images/Carts!.png)  
+ ![Carts](./app/assets/images/Carts!.png)    
  ## Cart Page  
- ![Cart](./app/assets/images/Cart!.png)  
+ ![Cart](./app/assets/images/Cart!.png)    
  ## Cart-Items Page  
- ![CartItem](./app/assets/images/CartItem!.png)  
- ## Message Seller Page  
- ![MessageSeller](./app/assets/images/MessageSeller!.png)  
+ ![CartItem](./app/assets/images/CartItem!.png)    
+ ## Ask Seller Page  
+ ![MessageSeller](./app/assets/images/MessageSeller!.png)    
  ## Favorites Page  
- ![Favorites](./app/assets/images/Favorites!.png)  
+ ![Favorites](./app/assets/images/Favorites!.png)    
  ## Shipping Page  
- ![Shipping](./app/assets/images/Shipping!.png)  
+ ![Shipping](./app/assets/images/Shipping!.png)    
  ## Payment Page  
- ![Stripe](./app/assets/images/Stripe.png)  
+ ![Stripe](./app/assets/images/Stripe.png)    
  ## Payment Confirmation Page  
- ![Success](./app/assets/images/Success!.png)  
+ ![Success](./app/assets/images/Success!.png)    
  ## Receipt Page  
- ![Receipt](./app/assets/images/Receipt!.png)  
+ ![Receipt](./app/assets/images/Receipt!.png)    
  ## Selling List Page  
- ![SellingList](./app/assets/images/SellingList!.png)  
+ ![SellingList](./app/assets/images/SellingList!.png)    
  ## Selling Product Page  
  ![SellingProduct](./app/assets/images/SellingProduct!.png)
- ![SellingProduct2](./app/assets/images/SellingProduct!!.png)  
+ ![SellingProduct2](./app/assets/images/SellingProduct!!.png)    
  ## Dashboard Page  
- ![Dashboard](./app/assets/images/Dashboard!.png)  
- ## Replying Page  
- ![Replying](./app/assets/images/Replying!.png)  
+ ![Dashboard](./app/assets/images/Dashboard!.png)    
+ ## Replying Client Page  
+ ![Replying](./app/assets/images/Replying!.png)    
  ## Email Welcome  
- ![EmailRegister](./app/assets/images/EmailRegistered.png)  
+ ![EmailRegister](./app/assets/images/EmailRegistered.png)    
  ## Email Receipt  
- ![EmailPurchase](./app/assets/images/EmailPurchase.png)  
+ ![EmailPurchase](./app/assets/images/EmailPurchase.png)    
 
  ### Target audience
-  - For any individual, entrepreneurs, businesses and organizations to buy or sell brand new and second hand products literally in general, anything!  
-
+  - For any individual, entrepreneurs, businesses and organizations to buy or sell brand new and second hand products literally in general, anything!    
 
  ### Tech Stack
 - HTML: front end content
@@ -140,9 +155,11 @@ Darknet was developed not to only try solving most of the above-mentioned issues
 - Sendgrid: Email API smtp.
 - Stripe: Payment Gatway API.
 - AWS S3: Cloud storage for images.
-- Git version control: 16 branches and more than 50 commits.
+- Git version control: 16 branches and more than 50 commits.  
 
-# R12	User stories for your app  
+<a name="userstories"/></a>
+
+# User stories  
 
 ### ***As a Visitor***
 - I want to view listings with nice image and details.
@@ -165,9 +182,9 @@ Darknet was developed not to only try solving most of the above-mentioned issues
 - I want make payments oline payment and receive receipts of my purchases by email.
 - I want to see my previous purchases and access its receipts.
 
+<a name="wireframes"/></a>
 
-
-# R13	Wireframes for your app 
+# Wireframes 
 
 ### Landing Page  
 ![1w](./app/assets/images/1w.png)   
@@ -187,9 +204,9 @@ Darknet was developed not to only try solving most of the above-mentioned issues
 ### Dashboard Page  
 ![6w](./app/assets/images/6w.png)  
 
-<a name="ERD"/></a>
+<a name="erd"/></a>
 
-# R14	Darknet ERD's Design    
+# ERD    
 ### Initial Version  
 * The initial ERD version during the initial development stages, bank details, address and location was considered for all users.
 * After taking user experience into consideration and time optimization, I decided to go for a more dry solution, replacing those tables with a shipping info table, so before each payment on the wesite the user will be required to provide, confirm or update shipping info. Comparing with the initial design, those changes is far benefitial for this project. 
@@ -202,9 +219,9 @@ Then two join tables were added to support Favorites and instant Messaging featu
 * The final result of those implementations can be found below, at the final ERD version:  
 ![ERD](./app/assets/images/darknet-ERD_Final.png) 
 
+<a name="abstractions"/></a> 
 
-
-# R15	Darknet High-level components  
+# High-level components  
 
 **1. Action Controller**  
 
@@ -268,26 +285,31 @@ The Action View manage all html, email and text templates. It is a framework to 
   ```ruby 
    your username is: <%= @user.username %>.   
    ```
+<a name="thirdparty"/></a> 
 
-
-# R16	Darknet third party services  
+# Third Party Services  
 [Heroku](https://id.heroku.com): Darknet is deployed to Heroku. All production environment keys are held on heroku website setting tools, Heroku also manage postgresql for production. Heroku is very easy to deploy to, all files gets easily compilied and deplyed with just a few lines of code thanks to github integration with Heroku. Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud, its a first-class integration, fast, flexible, and efficient CI/CD.
 
 [Sendgrid](https://sendgrid.com/): We are integrated with SendGrid API for email services. The set up consist in creating API key so that stabilish a secure conection with Sendgrid. With a easy setup we integrate Sendgrid with Rails mailer module that allow us to working completelly inside the mailer. Sendgrid is a leader in trusted email delivery, cloud-based solution that sends transactional and marketing email. A secure API for email service. 
 
 [AWS S3](https://aws.amazon.com/aws/s3) - We are integrated with Amazon S3 API for cloud storage. The set up consist in get a bucket with some configuration on Amazon website and getting a few keys and data to be used on our code setup with Active store, Amazon is the best cloud storage solution for storing our products uploaded photos.
 
-[Stripe](https://stripe.com/au): We are integrated with Stripe payment API. The set up consist in creating API key so that stabilish a secure conection with stripe, with the key o hand we create a session for payment, receiving a call back with some important data such as the payment intent id, in which is used to create another session with webhook to retrieve payment data for the processed payment. That retrieved payment data contains valuable info such as payment status and receipt. Stripe is an online payment getway infrastructure, secure and very well documented allow a smooth and safe implementation. Millions of businesses of all sizes use Stripe's software and APIs to accept payments, send payouts, and manage their businesses online.
+[Stripe](https://stripe.com/au): We are integrated with Stripe payment API. The set up consist in creating API key so that stabilish a secure conection with stripe, with the key o hand we create a session for payment, receiving a call back with some important data such as the payment intent id, in which is used to create another session with webhook to retrieve payment data for the processed payment. That retrieved payment data contains valuable info such as payment status and receipt. Stripe is an online payment getway infrastructure, secure and very well documented allow a smooth and safe implementation. Millions of businesses of all sizes use Stripe's software and APIs to accept payments, send payouts, and manage their businesses online.  
 
-### Some gems included into this project are:
+<a name="gems"/></a> 
+
+# Some Gems included into this project:  
 [FIGARO](https://github.com/laserlemon/figaro): Figaro parses a Git-ignored YAML file in your application and loads its values into ENV.Simple, Heroku-friendly Rails app configuration using ENV and a single YAML file.  
 [SIMPLEFORMS](https://github.com/heartcombo/simple_form): Simple Form aims to be as flexible as possible while helping with powerful components to create forms.  
 [MATERIALICONS](https://github.com/Angelmmiguel/material_icons): All Darknet icons are from Google Fonts/ Material Design Icons, it has +900 set of icons based on Material Design guidelines.  
 [ULTRAHOOK](https://www.ultrahook.com/): UltraHook makes it super easy to connect public webhook endpoints with development environments, Ultrahook has been in use to support the stripe callbacks while Darknet is in development environment.  
 [Devise](https://github.com/heartcombo/devise): We are using devise to manage authentications in our app. Devise is the best, fexible and well documented solution for authenticating users, that gem creates sign-up and sign-in forms with user authentication and much more. 
 [Bootstrap](https://getbootstrap.com/): Darknet has quite a lot Bootstrap components such as navbars, buttons, forms. Bootstrap combine HTML, CSS and JavaScript library to implement stylings, it has a huge options for components and is very easy to use its classes for responsive layouts and custom components. 
+[File_Validators](https://github.com/musaffa/file_validators):File Validators gem adds file size and content type validations to ActiveModel. Any module that uses ActiveModel, for example ActiveRecord, can use these file validators.    
 
-# R17	Model Relationships/Associations   
+<a name="associations"/></a> 
+
+# Models's Associations   
 
 ## **User : Product**  
 This relationship shows a user can have many products and a product belongs to a user. The relationship is created by referencing the user_id in the product model to represent a one-to-many association. I also used "has_one_attached" within the Product model. This allows the product to be saved with an image. 
@@ -322,9 +344,9 @@ This relationship shows a product can have many users through favorite join tabl
 ## **Product : User : Message**    
 This relationship shows a product can have many users through message join table and a user can have many products through message join table. The message join table belongs to product table and also belongs to user table. The relationship is created by referencing the product_id and user_id in the Message model to represent a many-to-many association.  
 
+<a name="relations"/></a> 
 
-
-# R18	Discuss the database relations to be implemented in your application 
+# Entity Relations 
 
  To support the features and functionalities designed for Darknet, the following relations was implemented: 
  - Product 
@@ -353,15 +375,11 @@ This relationship shows a product can have many users through message join table
   ![Cart](./app/assets/images/cart_items_payments.png)    
 
   Finally, to support the Shipping Info feature, we have the Shipping info table linked to user tables, as below:  
-  ![Shipping](./app/assets/images/Shipping_user.png)    
-
-
-
-
+  ![Shipping](./app/assets/images/Shipping_user.png)      
 
 <a name="schema"/></a>  
 
-# R19	Database schema design  
+# Schema  
 ''' ruby
 
   Table "active_storage_attachments"{
@@ -472,13 +490,11 @@ This relationship shows a product can have many users through message join table
     string "email"  
     string "password"  
   } 
-  
 
+'''  
+<a name="trello"/></a>
 
-
-'''
-
-# R20	Describe the way tasks are allocated and tracked in your project
+# Planning & Execution - Project Management
 
 To achieve the best result possible for this project I had followed Agile approach combined with some management tools such as “Trello boards cards” and git versioning system.   
 

@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   has_one_attached :picture
   
   #validations
-  validates :picture, presence: true
+  validates :picture, presence: true, file_size: { in: 500.kilobyte..2.megabyte, message: 'must be within %{min} and %{max}'}, file_content_type: { allow: ['image/jpeg', 'image/png'], message: 'only %{types} are allowed'}
   validates :title, presence: true
   validates :description, presence: true
   validates :price, presence: true
