@@ -8,7 +8,7 @@
 [Solution](#solution)
 [Links](#links)  
 [App Overview](#overview)  
-[User Stories](#userstories) 
+[User Stories](#userstories)   
 [Wireframes](#wireframes)  
 [ERD](#erd)   
 [High Level Components](#abstractions)  
@@ -19,7 +19,8 @@
 [Schema](#schema)  
 [Planning & Execution - Project Management](#trello)    
 
-<a name="setup"/></a>
+<a name="setup"/></a>  
+
 ## Setup Instructions (Local)
 
 - Clone this repo
