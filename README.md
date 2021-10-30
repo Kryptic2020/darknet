@@ -101,7 +101,7 @@ Our platform will help individuals, entrepreneurs and business, to sell more pro
  - Message back your clients.   
   
  ## Sitemap 
- ![SITEMAP](./app/assets/images/darknetSitemap_Final.png)
+ ![SITEMAP](./app/assets/images/DarknetSitemap_Final.png)
  
  ## Landing Page  
  ![LANDING](./app/assets/images/Landing!.png)    
